@@ -26,3 +26,16 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* =====================
+   Elementor Overrides
+   ===================== */
+
+.e-con,
+.e-con > .e-con-inner {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
