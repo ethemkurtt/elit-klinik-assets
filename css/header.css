@@ -1,0 +1,14 @@
+/* =====================
+   Elit Klinik - Header
+   ===================== */
+
+.ek-header {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 36px 36px 12px 36px;
+  background-color: rgba(0, 51, 102, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
