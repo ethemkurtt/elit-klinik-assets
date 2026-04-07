@@ -170,16 +170,14 @@
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 240px;
-  background: rgba(0, 51, 102, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 12px;
-  padding: 12px 0;
-  margin-top: 12px;
+  min-width: 280px;
+  background: #113263;
+  border-radius: 0 0 12px 12px;
+  padding: 16px 0;
+  margin-top: 14px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
+  transform: translateY(5px);
   transition: all 0.3s ease;
   list-style: none;
   z-index: 1000;
@@ -196,14 +194,16 @@
 }
 
 .ek-dropdown__menu li a {
-  display: block;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
   font-family: 'Sofia Pro', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   color: #FEFEFE;
   white-space: nowrap;
-  transition: background 0.2s;
+  transition: color 0.2s;
 }
 
 .ek-dropdown__menu li a::after {
@@ -211,8 +211,9 @@
 }
 
 .ek-dropdown__menu li a:hover {
-  background: rgba(255, 255, 255, 0.1);
+  color: #E8734A;
   transform: none;
+  background: none;
 }
 
 /* 2. seviye dropdown (sağa açılır) */
@@ -220,27 +221,23 @@
   position: relative;
 }
 
-.ek-dropdown__menu .ek-sub > a::before {
-  content: '›';
-  position: absolute;
-  right: 16px;
-  font-size: 18px;
+.ek-dropdown__menu .ek-sub > a span.ek-arrow {
+  font-size: 14px;
+  margin-left: 12px;
 }
 
 .ek-sub__menu {
   position: absolute;
   top: 0;
   left: 100%;
-  min-width: 220px;
-  background: rgba(0, 51, 102, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 12px;
-  padding: 12px 0;
-  margin-left: 4px;
+  min-width: 240px;
+  background: #113263;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 0;
+  margin-left: 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(10px);
+  transform: translateX(5px);
   transition: all 0.3s ease;
   list-style: none;
   z-index: 1001;
