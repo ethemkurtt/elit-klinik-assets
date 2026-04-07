@@ -143,12 +143,113 @@
   transition: transform 0.3s ease;
 }
 
-.ek-header__nav a:hover {
-  transform: translateY(-3px);
+.ek-header__nav > a:hover,
+.ek-header__nav > .ek-dropdown:hover > a {
+  transform: translateY(-2px);
 }
 
-.ek-header__nav a:hover::after {
+.ek-header__nav > a:hover::after,
+.ek-header__nav > .ek-dropdown:hover > a::after {
   transform: scaleX(1);
+}
+
+/* =====================
+   Dropdown Menu
+   ===================== */
+
+.ek-dropdown {
+  position: relative;
+}
+
+.ek-dropdown > a {
+  cursor: pointer;
+}
+
+/* 1. seviye dropdown (aşağı açılır) */
+.ek-dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: rgba(0, 51, 102, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 12px 0;
+  margin-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  list-style: none;
+  z-index: 1000;
+}
+
+.ek-dropdown:hover > .ek-dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ek-dropdown__menu li {
+  position: relative;
+}
+
+.ek-dropdown__menu li a {
+  display: block;
+  padding: 10px 20px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #FEFEFE;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.ek-dropdown__menu li a::after {
+  display: none;
+}
+
+.ek-dropdown__menu li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: none;
+}
+
+/* 2. seviye dropdown (sağa açılır) */
+.ek-dropdown__menu .ek-sub {
+  position: relative;
+}
+
+.ek-dropdown__menu .ek-sub > a::before {
+  content: '›';
+  position: absolute;
+  right: 16px;
+  font-size: 18px;
+}
+
+.ek-sub__menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 220px;
+  background: rgba(0, 51, 102, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 12px 0;
+  margin-left: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  list-style: none;
+  z-index: 1001;
+}
+
+.ek-sub:hover > .ek-sub__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
 
 /* =====================
