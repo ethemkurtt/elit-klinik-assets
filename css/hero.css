@@ -5,15 +5,14 @@
 .ek-hero {
   width: 100%;
   min-height: 100vh;
-  background-image: url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png');
+  background-image: url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-1024x502.png');
   background-size: cover;
-  background-position: center;
+  background-position: center right;
   background-repeat: no-repeat;
   background-color: #0a2a52;
   position: relative;
   z-index: 1;
-  margin-top: 0;
-  padding: 140px 36px 48px 36px;
+  padding: 90px 36px 48px 36px;
   display: flex;
   align-items: flex-end;
 }
