@@ -117,7 +117,9 @@
   font-family: 'Sofia Pro', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  line-height: 20px;
+  font-style: normal;
+  line-height: 100%;
+  letter-spacing: 0;
   color: #FEFEFE;
   text-align: center;
   padding: 12px 0;
