@@ -1,20 +1,9 @@
 /* =====================
-   Elit Klinik - Header v2
+   Elit Klinik - Header v3
    ===================== */
 
-/* Elementor override */
-.elementor-element,
-.elementor-widget-wrap,
-.elementor-widget,
-.elementor-section,
-.elementor-container,
-.e-con,
-.e-con-inner {
-  border-radius: 0 !important;
-}
-
 .ek-header {
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 36px 36px 12px 36px;
@@ -26,6 +15,21 @@
   justify-content: space-between;
   gap: 10px;
   border-radius: 0 !important;
+}
+
+/* =====================
+   Inner Container
+   ===================== */
+
+.ek-header__inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1368px;
+  margin: 0 auto;
+  height: 52px;
 }
 
 /* =====================
@@ -49,6 +53,7 @@
   align-items: flex-end;
   gap: 2.53px;
   width: 175.29px;
+  height: 47.53px;
 }
 
 .ek-header__logo-top {
@@ -57,6 +62,7 @@
   align-items: center;
   gap: 13.42px;
   width: 175.29px;
+  height: 33.55px;
 }
 
 .ek-header__logo-icon {
@@ -79,6 +85,20 @@
   color: #FEFEFE;
   display: flex;
   gap: 4px;
+  width: 87.87px;
+  height: 11.45px;
+}
+
+/* =====================
+   Right Side (Nav + Button)
+   ===================== */
+
+.ek-header__right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
 }
 
 /* =====================
@@ -87,15 +107,20 @@
 
 .ek-header__nav {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  gap: 36px;
+  gap: 64px;
 }
 
 .ek-header__nav a {
   font-family: 'Sofia Pro', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
   color: #FEFEFE;
+  text-align: center;
+  padding: 12px 0;
   transition: color 0.2s;
   white-space: nowrap;
 }
@@ -109,23 +134,30 @@
    ===================== */
 
 .ek-header__cta {
-  padding: 12px 28px;
-  background: #FEFEFE;
-  color: #003366;
-  font-family: 'Sofia Pro', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 8px;
+  width: 123px;
+  height: 48px;
+  background: rgba(254, 254, 254, 0.2);
   border: none;
-  border-radius: 50px !important;
+  border-radius: 12px !important;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s;
   flex-shrink: 0;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #FEFEFE;
 }
 
 .ek-header__cta:hover {
-  background: #e8e8e8;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: rgba(254, 254, 254, 0.35);
 }
 
 /* =====================
@@ -153,24 +185,28 @@
    Responsive
    ===================== */
 
-@media (max-width: 1024px) {
-  .ek-header {
-    padding: 24px 24px 12px 24px;
+@media (max-width: 1200px) {
+  .ek-header__nav {
+    gap: 32px;
   }
 
-  .ek-header__nav {
-    gap: 20px;
+  .ek-header__right {
+    gap: 32px;
   }
 
   .ek-header__nav a {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .ek-header {
-    flex-wrap: wrap;
     padding: 20px;
+  }
+
+  .ek-header__inner {
+    flex-wrap: wrap;
+    height: auto;
     gap: 16px;
   }
 
@@ -184,7 +220,7 @@
     margin-left: auto;
   }
 
-  .ek-header__nav {
+  .ek-header__right {
     display: none;
     flex-direction: column;
     align-items: flex-start;
@@ -195,18 +231,17 @@
     border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  .ek-header__nav.active {
+  .ek-header__right.active {
     display: flex;
   }
 
-  .ek-header__cta {
-    display: none;
-    width: 100%;
-    text-align: center;
-    order: 4;
+  .ek-header__nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
-  .ek-header__cta.active {
-    display: block;
+  .ek-header__cta {
+    width: 100%;
   }
 }
