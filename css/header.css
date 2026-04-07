@@ -1,6 +1,17 @@
 /* =====================
-   Elit Klinik - Header
+   Elit Klinik - Header v2
    ===================== */
+
+/* Elementor override */
+.elementor-element,
+.elementor-widget-wrap,
+.elementor-widget,
+.elementor-section,
+.elementor-container,
+.e-con,
+.e-con-inner {
+  border-radius: 0 !important;
+}
 
 .ek-header {
   width: 100%;
@@ -14,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 /* =====================
@@ -105,7 +116,7 @@
   font-size: 15px;
   font-weight: 600;
   border: none;
-  border-radius: 50px;
+  border-radius: 50px !important;
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.2s, box-shadow 0.2s;
