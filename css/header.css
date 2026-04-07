@@ -126,12 +126,29 @@
   color: #FEFEFE;
   text-align: center;
   padding: 12px 0;
-  transition: color 0.2s;
   white-space: nowrap;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.ek-header__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #E8734A;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .ek-header__nav a:hover {
-  color: #579AF2;
+  transform: translateY(-3px);
+}
+
+.ek-header__nav a:hover::after {
+  transform: scaleX(1);
 }
 
 /* =====================
