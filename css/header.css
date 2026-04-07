@@ -17,37 +17,63 @@
   border-radius: 16px;
 }
 
-/* Logo */
+/* =====================
+   Logo Area
+   ===================== */
+
 .ek-header__logo {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2.53px 0;
+  gap: 6.33px;
+  width: 175.29px;
+  height: 52px;
   flex-shrink: 0;
 }
 
-.ek-header__logo img {
-  height: 40px;
-  width: auto;
+.ek-header__logo-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2.53px;
+  width: 175.29px;
+}
+
+.ek-header__logo-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 13.42px;
+  width: 175.29px;
+}
+
+.ek-header__logo-icon {
+  width: 33.55px;
+  height: 33.55px;
+  flex-shrink: 0;
 }
 
 .ek-header__logo-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.ek-header__logo-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #003366;
+  width: 128.32px;
+  height: 20.13px;
+  flex-shrink: 0;
 }
 
 .ek-header__logo-sub {
-  font-size: 11px;
-  color: #0066cc;
-  font-weight: 500;
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 11.56px;
+  line-height: 12px;
+  color: #FEFEFE;
+  display: flex;
+  gap: 4px;
 }
 
-/* Navigation */
+/* =====================
+   Navigation
+   ===================== */
+
 .ek-header__nav {
   display: flex;
   align-items: center;
@@ -55,22 +81,27 @@
 }
 
 .ek-header__nav a {
+  font-family: 'Sofia Pro', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: #FEFEFE;
   transition: color 0.2s;
   white-space: nowrap;
 }
 
 .ek-header__nav a:hover {
-  color: #0066cc;
+  color: #579AF2;
 }
 
-/* CTA Button */
+/* =====================
+   CTA Button
+   ===================== */
+
 .ek-header__cta {
   padding: 12px 28px;
-  background: #ffffff;
-  color: #1a1a1a;
+  background: #FEFEFE;
+  color: #003366;
+  font-family: 'Sofia Pro', sans-serif;
   font-size: 15px;
   font-weight: 600;
   border: none;
@@ -78,69 +109,18 @@
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
 }
 
 .ek-header__cta:hover {
-  background: #f0f0f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #e8e8e8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* =====================
-   Responsive
+   Hamburger (Mobile)
    ===================== */
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .ek-header {
-    padding: 24px 24px 12px 24px;
-    gap: 8px;
-  }
-
-  .ek-header__nav {
-    gap: 20px;
-  }
-
-  .ek-header__nav a {
-    font-size: 14px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .ek-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-    gap: 16px;
-  }
-
-  .ek-header__nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    display: none;
-  }
-
-  .ek-header__nav.active {
-    display: flex;
-  }
-
-  .ek-header__cta {
-    width: 100%;
-    text-align: center;
-    display: none;
-  }
-
-  .ek-header__cta.active {
-    display: block;
-  }
-
-  .ek-header__mobile-toggle {
-    display: block;
-  }
-}
-
-/* Hamburger - sadece mobilde görünür */
 .ek-header__mobile-toggle {
   display: none;
   background: none;
@@ -153,7 +133,69 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: #1a1a1a;
+  background: #FEFEFE;
   margin: 5px 0;
   transition: 0.3s;
+}
+
+/* =====================
+   Responsive
+   ===================== */
+
+@media (max-width: 1024px) {
+  .ek-header {
+    padding: 24px 24px 12px 24px;
+  }
+
+  .ek-header__nav {
+    gap: 20px;
+  }
+
+  .ek-header__nav a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ek-header {
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .ek-header__logo {
+    order: 1;
+  }
+
+  .ek-header__mobile-toggle {
+    display: block;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .ek-header__nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    order: 3;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .ek-header__nav.active {
+    display: flex;
+  }
+
+  .ek-header__cta {
+    display: none;
+    width: 100%;
+    text-align: center;
+    order: 4;
+  }
+
+  .ek-header__cta.active {
+    display: block;
+  }
 }
