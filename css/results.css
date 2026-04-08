@@ -4,7 +4,7 @@
 
 .ek-results {
   width: 100%;
-  background: #0a0a0a;
+  background: #0B1A2E;
   padding: 80px 36px;
   position: relative;
   z-index: 1;
@@ -61,14 +61,14 @@
 
 .ek-results__after {
   z-index: 2;
-  clip-path: inset(0 0 0 50%);
+  clip-path: inset(0 0 0 0%);
 }
 
 .ek-results__handle {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
+  left: 0%;
   width: 3px;
   background: #FEFEFE;
   z-index: 10;

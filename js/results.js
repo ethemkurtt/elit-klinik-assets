@@ -10,36 +10,57 @@ document.addEventListener('DOMContentLoaded', function () {
   var afterImg = slider.querySelector('.ek-results__after');
   var handle = slider.querySelector('.ek-results__handle');
   var isDragging = false;
+  var rafId = null;
+  var currentX = 0;
 
-  function updateSlider(x) {
+  function updateSlider() {
     var rect = slider.getBoundingClientRect();
-    var pos = (x - rect.left) / rect.width;
-    pos = Math.max(0.05, Math.min(0.95, pos));
+    var pos = (currentX - rect.left) / rect.width;
+    pos = Math.max(0.02, Math.min(0.98, pos));
     var percent = pos * 100;
+
     afterImg.style.clipPath = 'inset(0 0 0 ' + percent + '%)';
     handle.style.left = percent + '%';
+    rafId = null;
+  }
+
+  function requestUpdate(x) {
+    currentX = x;
+    if (!rafId) {
+      rafId = requestAnimationFrame(updateSlider);
+    }
   }
 
   slider.addEventListener('mousedown', function (e) {
+    e.preventDefault();
     isDragging = true;
-    updateSlider(e.clientX);
+    requestUpdate(e.clientX);
   });
+
   document.addEventListener('mousemove', function (e) {
     if (!isDragging) return;
     e.preventDefault();
-    updateSlider(e.clientX);
+    requestUpdate(e.clientX);
   });
-  document.addEventListener('mouseup', function () { isDragging = false; });
 
+  document.addEventListener('mouseup', function () {
+    isDragging = false;
+  });
+
+  // Touch support
   slider.addEventListener('touchstart', function (e) {
     isDragging = true;
-    updateSlider(e.touches[0].clientX);
-  });
+    requestUpdate(e.touches[0].clientX);
+  }, { passive: true });
+
   document.addEventListener('touchmove', function (e) {
     if (!isDragging) return;
-    updateSlider(e.touches[0].clientX);
+    requestUpdate(e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('touchend', function () {
+    isDragging = false;
   });
-  document.addEventListener('touchend', function () { isDragging = false; });
 
   /* ---- Modal ---- */
   var modal = document.querySelector('.ek-results__modal');
