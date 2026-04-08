@@ -1,0 +1,182 @@
+/* =====================
+   Elit Klinik - Doctors Section
+   ===================== */
+
+.ek-doctors {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 80px 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.ek-doctors__inner {
+  width: 100%;
+  max-width: 1368px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 64px;
+}
+
+/* =====================
+   Doctor Cards
+   ===================== */
+
+.ek-doctors__cards {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.ek-doctors__card {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.ek-doctors__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ek-doctors__card-info {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.ek-doctors__card-name {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.ek-doctors__card-role {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555555;
+}
+
+/* =====================
+   Text Content
+   ===================== */
+
+.ek-doctors__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.ek-doctors__title {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #003366;
+}
+
+.ek-doctors__subtitle {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #444444;
+  font-style: italic;
+}
+
+.ek-doctors__desc {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #555555;
+  text-align: center;
+}
+
+.ek-doctors__cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  width: fit-content;
+  align-self: center;
+  background: #F98755;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FEFEFE;
+  transition: background 0.2s;
+}
+
+.ek-doctors__cta:hover {
+  background: #e0743f;
+}
+
+/* =====================
+   Responsive
+   ===================== */
+
+@media (max-width: 1024px) {
+  .ek-doctors__inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ek-doctors__cards {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ek-doctors__content {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ek-doctors {
+    padding: 48px 20px;
+  }
+
+  .ek-doctors__cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ek-doctors__card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .ek-doctors__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .ek-doctors__cta {
+    width: 100%;
+  }
+}
