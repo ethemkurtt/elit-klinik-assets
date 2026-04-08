@@ -135,10 +135,10 @@
 
 .ek-results__subtitle {
   font-family: 'Sofia Pro', sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-  color: #F98755;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  color: #003366;
 }
 
 .ek-results__title {
@@ -146,7 +146,7 @@
   font-weight: 700;
   font-size: 42px;
   line-height: 50px;
-  color: #579AF2;
+  color: #F98755;
 }
 
 .ek-results__desc {
@@ -154,11 +154,11 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
-  color: rgba(254, 254, 254, 0.7);
+  color: #444444;
 }
 
 .ek-results__desc strong {
-  color: #FEFEFE;
+  color: #1a1a1a;
   font-weight: 600;
 }
 
@@ -169,14 +169,14 @@
   padding: 14px 28px;
   width: fit-content;
   background: #F98755;
-  border: none;
-  border-radius: 12px;
+  border: 1px solid #F98755;
+  border-radius: 50px;
   cursor: pointer;
   font-family: 'Sofia Pro', sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: #FEFEFE;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .ek-results__cta:hover {
