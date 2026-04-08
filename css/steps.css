@@ -1,0 +1,263 @@
+/* =====================
+   Elit Klinik - Steps Section
+   ===================== */
+
+.ek-steps {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 80px 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.ek-steps__inner {
+  width: 100%;
+  max-width: 1368px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* =====================
+   Header
+   ===================== */
+
+.ek-steps__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ek-steps__title {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #1a1a1a;
+}
+
+.ek-steps__subtitle {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #555555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* =====================
+   Tabs
+   ===================== */
+
+.ek-steps__tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+}
+
+.ek-steps__tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.ek-steps__tab:hover {
+  background: rgba(0, 51, 102, 0.03);
+}
+
+.ek-steps__tab.active {
+  border-bottom-color: #003366;
+}
+
+.ek-steps__tab-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EFF3F8;
+  transition: all 0.3s ease;
+}
+
+.ek-steps__tab.active .ek-steps__tab-icon {
+  background: #003366;
+}
+
+.ek-steps__tab-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.ek-steps__tab-icon svg path,
+.ek-steps__tab-icon svg circle,
+.ek-steps__tab-icon svg rect,
+.ek-steps__tab-icon svg line {
+  stroke: #003366;
+  transition: stroke 0.3s ease;
+}
+
+.ek-steps__tab.active .ek-steps__tab-icon svg path,
+.ek-steps__tab.active .ek-steps__tab-icon svg circle,
+.ek-steps__tab.active .ek-steps__tab-icon svg rect,
+.ek-steps__tab.active .ek-steps__tab-icon svg line {
+  stroke: #FFFFFF;
+}
+
+.ek-steps__tab-label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #003366;
+  text-align: center;
+}
+
+/* =====================
+   Content Area
+   ===================== */
+
+.ek-steps__content {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 450px;
+}
+
+.ek-steps__panel {
+  display: none;
+  width: 100%;
+  position: relative;
+}
+
+.ek-steps__panel.active {
+  display: flex;
+}
+
+.ek-steps__panel-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.ek-steps__panel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, transparent 100%);
+  border-radius: 16px 0 0 16px;
+}
+
+.ek-steps__panel-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #FEFEFE;
+  width: fit-content;
+}
+
+.ek-steps__panel-title {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #FEFEFE;
+}
+
+.ek-steps__panel-desc {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ek-steps__panel-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  width: fit-content;
+  background: #F98755;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FEFEFE;
+  transition: background 0.2s;
+}
+
+.ek-steps__panel-cta:hover {
+  background: #e0743f;
+}
+
+/* =====================
+   Responsive
+   ===================== */
+
+@media (max-width: 1024px) {
+  .ek-steps__tabs {
+    flex-wrap: wrap;
+  }
+
+  .ek-steps__tab {
+    flex: 0 0 33.33%;
+  }
+
+  .ek-steps__panel-overlay {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ek-steps {
+    padding: 48px 20px;
+  }
+
+  .ek-steps__tab {
+    flex: 0 0 50%;
+  }
+
+  .ek-steps__panel-overlay {
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 70%, transparent 100%);
+    border-radius: 0 0 16px 16px;
+  }
+
+  .ek-steps__panel-img {
+    height: 350px;
+  }
+
+  .ek-steps__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
