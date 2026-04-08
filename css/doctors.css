@@ -33,11 +33,12 @@
 
 .ek-doctors__card {
   position: relative;
-  width: 280px;
-  height: 380px;
+  width: 220px;
+  height: 300px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .ek-doctors__card img {
@@ -48,32 +49,32 @@
 
 .ek-doctors__card-info {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid #EFF3F8;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 12px;
-  padding: 24px 20px;
+  padding: 16px 14px;
   text-align: center;
 }
 
 .ek-doctors__card-name {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 20px;
   color: #1a1a1a;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .ek-doctors__card-role {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 16px;
   color: #555555;
 }
 
