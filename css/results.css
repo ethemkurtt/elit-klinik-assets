@@ -1,0 +1,298 @@
+/* =====================
+   Elit Klinik - Results Section
+   ===================== */
+
+.ek-results {
+  width: 100%;
+  background: #0a0a0a;
+  padding: 80px 36px;
+  position: relative;
+  z-index: 1;
+}
+
+.ek-results__inner {
+  width: 100%;
+  max-width: 1368px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* =====================
+   Top Area (Slider + Text)
+   ===================== */
+
+.ek-results__top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 64px;
+}
+
+/* =====================
+   Before/After Slider
+   ===================== */
+
+.ek-results__slider {
+  position: relative;
+  width: 580px;
+  height: 480px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ek-results__slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ek-results__before {
+  z-index: 1;
+}
+
+.ek-results__after {
+  z-index: 2;
+  clip-path: inset(0 0 0 50%);
+}
+
+.ek-results__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: #FEFEFE;
+  z-index: 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ek-results__handle-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.ek-results__handle-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ek-results__label {
+  position: absolute;
+  top: 16px;
+  z-index: 5;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FEFEFE;
+}
+
+.ek-results__label--before {
+  left: 16px;
+}
+
+.ek-results__label--after {
+  right: 16px;
+}
+
+/* =====================
+   Text Content
+   ===================== */
+
+.ek-results__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.ek-results__subtitle {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #F98755;
+}
+
+.ek-results__title {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 50px;
+  color: #579AF2;
+}
+
+.ek-results__desc {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(254, 254, 254, 0.7);
+}
+
+.ek-results__desc strong {
+  color: #FEFEFE;
+  font-weight: 600;
+}
+
+.ek-results__cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  width: fit-content;
+  background: #F98755;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FEFEFE;
+  transition: background 0.2s;
+}
+
+.ek-results__cta:hover {
+  background: #e0743f;
+}
+
+/* =====================
+   Thumbnail Gallery
+   ===================== */
+
+.ek-results__gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ek-results__gallery::-webkit-scrollbar {
+  height: 4px;
+}
+
+.ek-results__gallery::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.ek-results__gallery::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.ek-results__thumb {
+  position: relative;
+  min-width: 280px;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.ek-results__thumb:hover {
+  transform: scale(1.02);
+}
+
+.ek-results__thumb.active {
+  border-color: #F98755;
+}
+
+.ek-results__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ek-results__thumb-label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #FEFEFE;
+}
+
+/* =====================
+   Responsive
+   ===================== */
+
+@media (max-width: 1024px) {
+  .ek-results__top {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .ek-results__slider {
+    width: 100%;
+    height: 400px;
+  }
+
+  .ek-results__title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ek-results {
+    padding: 48px 20px;
+  }
+
+  .ek-results__slider {
+    height: 300px;
+  }
+
+  .ek-results__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .ek-results__thumb {
+    min-width: 220px;
+    height: 140px;
+  }
+
+  .ek-results__cta {
+    width: 100%;
+  }
+}
