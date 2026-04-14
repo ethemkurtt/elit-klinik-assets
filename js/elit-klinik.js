@@ -93,43 +93,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =============================================================
-     3. SIMULATION VIDEO MODAL
+     3. SIMULATION VIDEO - INLINE PLAY (no modal)
      ============================================================= */
 
-  var videoThumb = document.querySelector('.ek-simulation__video');
-  var simModal = document.querySelector('.ek-simulation__modal');
-  var simModalClose = document.querySelector('.ek-simulation__modal-close');
-  var simModalVideo = document.querySelector('.ek-simulation__modal-video');
+  var simVideoWrap = document.querySelector('.ek-simulation__video');
 
-  if (videoThumb && simModal) {
-    videoThumb.addEventListener('click', function () {
-      simModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      if (simModalVideo && simModalVideo.tagName === 'VIDEO') {
-        simModalVideo.play();
+  if (simVideoWrap) {
+    simVideoWrap.addEventListener('click', function () {
+      var video = this.querySelector('video');
+      if (!video) return;
+
+      if (this.classList.contains('playing')) {
+        video.pause();
+        this.classList.remove('playing');
+      } else {
+        this.classList.add('playing');
+        video.play();
       }
-    });
-
-    function closeSimModal() {
-      simModal.classList.remove('active');
-      document.body.style.overflow = '';
-      if (simModalVideo && simModalVideo.tagName === 'VIDEO') {
-        simModalVideo.pause();
-        simModalVideo.currentTime = 0;
-      }
-      if (simModalVideo && simModalVideo.tagName === 'IFRAME') {
-        var src = simModalVideo.src;
-        simModalVideo.src = '';
-        simModalVideo.src = src;
-      }
-    }
-
-    if (simModalClose) {
-      simModalClose.addEventListener('click', closeSimModal);
-    }
-
-    simModal.addEventListener('click', function (e) {
-      if (e.target === simModal) closeSimModal();
     });
   }
 
@@ -236,16 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-
-    // Simulation modal
-    if (simModal && simModal.classList.contains('active')) {
-      simModal.classList.remove('active');
-      document.body.style.overflow = '';
-      if (simModalVideo && simModalVideo.tagName === 'VIDEO') {
-        simModalVideo.pause();
-        simModalVideo.currentTime = 0;
-      }
-    }
+    // No modals remaining - all videos play inline
   });
 
 });

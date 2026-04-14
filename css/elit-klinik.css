@@ -394,7 +394,10 @@ img {
 .ek-hero {
   width: 100%;
   min-height: 100vh;
-  background: #0a2a52 url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png') no-repeat center / cover;
+  background-image: url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-color: #0a2a52 !important;
   position: relative;
   z-index: 1;
   padding: 36px 36px 48px 36px;
@@ -1141,6 +1144,23 @@ img {
   border-radius: 16px;
 }
 
+.ek-simulation__video video {
+  display: none;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background: #000;
+}
+
+.ek-simulation__video.playing img,
+.ek-simulation__video.playing .ek-simulation__play {
+  display: none;
+}
+
+.ek-simulation__video.playing video {
+  display: block;
+}
+
 .ek-simulation__play {
   position: absolute;
   top: 50%;
@@ -1168,58 +1188,6 @@ img {
   width: 28px;
   height: 28px;
   margin-left: 3px;
-}
-
-.ek-simulation__modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.92);
-  z-index: 10000;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-
-.ek-simulation__modal.active {
-  display: flex;
-}
-
-.ek-simulation__modal-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  z-index: 10001;
-}
-
-.ek-simulation__modal-close:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.ek-simulation__modal-close svg {
-  width: 24px;
-  height: 24px;
-}
-
-.ek-simulation__modal video,
-.ek-simulation__modal iframe {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 12px;
-  border: none;
 }
 
 
