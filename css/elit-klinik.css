@@ -1868,7 +1868,7 @@ img {
 .ek-reviews {
   width: 100%;
   background: #FFFFFF;
-  padding: 80px 36px;
+  padding: 96px 0 96px 96px;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -1876,20 +1876,19 @@ img {
 
 .ek-reviews__inner {
   width: 100%;
-  max-width: 1368px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 64px;
 }
 
 .ek-reviews__title {
   font-family: 'Sofia Pro', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 36px;
-  line-height: 44px;
-  color: #1a1a1a;
+  line-height: 36px;
+  color: #003366;
   text-align: center;
+  padding-right: 96px;
 }
 
 /* Scrollable cards row */
@@ -1897,7 +1896,7 @@ img {
 .ek-reviews__track {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  align-items: center;
   overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -1905,32 +1904,31 @@ img {
 }
 
 .ek-reviews__track::-webkit-scrollbar {
-  height: 4px;
-}
-
-.ek-reviews__track::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-.ek-reviews__track::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
+  height: 0;
+  display: none;
 }
 
 /* Review Card */
 
 .ek-reviews__card {
-  min-width: 380px;
-  max-width: 380px;
+  min-width: 418px;
+  max-width: 418px;
+  height: 270px;
   flex-shrink: 0;
   background: #FFFFFF;
-  border: 1px solid #E8E8E8;
-  border-radius: 16px;
-  padding: 32px 28px;
+  border: none;
+  border-right: 1px solid #EFEFEF;
+  padding: 16px 32px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ek-reviews__card:last-child {
+  border-right: none;
+  border: 1px solid #EFEFEF;
 }
 
 /* Card Header: avatar + name + stars */
@@ -1939,12 +1937,12 @@ img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .ek-reviews__avatar {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -1953,26 +1951,28 @@ img {
 .ek-reviews__card-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  justify-content: center;
+  gap: 0;
 }
 
 .ek-reviews__name {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: #1a1a1a;
+  font-size: 20px;
+  line-height: 30px;
+  color: #2E3033;
 }
 
 .ek-reviews__stars {
   display: flex;
   flex-direction: row;
-  gap: 2px;
+  align-items: center;
+  gap: 4px;
 }
 
-.ek-reviews__stars svg {
-  width: 16px;
-  height: 16px;
+.ek-reviews__stars img {
+  width: 14px;
+  height: 14px;
 }
 
 /* Review Text */
@@ -1980,46 +1980,49 @@ img {
 .ek-reviews__text {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 24px;
-  color: #555555;
+  color: #2E3033;
 }
 
 /* Source (Google / Trustpilot) */
 
 .ek-reviews__source {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   margin-top: auto;
 }
 
-.ek-reviews__source-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
+.ek-reviews__source-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }
 
-.ek-reviews__source-info {
-  display: flex;
-  flex-direction: column;
+.ek-reviews__source-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .ek-reviews__source-label {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  color: #999999;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6E6E6E;
 }
 
 .ek-reviews__source-name {
   font-family: 'Sofia Pro', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  color: #003366;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #579AF2;
 }
 
 
@@ -2369,18 +2372,20 @@ img {
 
   /* Reviews */
   .ek-reviews {
-    padding: 48px 20px;
+    padding: 48px 0 48px 20px;
   }
 
   .ek-reviews__title {
     font-size: 28px;
     line-height: 36px;
+    padding-right: 20px;
   }
 
   .ek-reviews__card {
-    min-width: 300px;
-    max-width: 300px;
-    padding: 24px 20px;
+    min-width: 320px;
+    max-width: 320px;
+    height: auto;
+    padding: 16px 20px;
   }
 
   /* Footer */
