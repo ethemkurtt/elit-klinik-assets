@@ -1281,24 +1281,25 @@ img {
   background: #003366;
 }
 
-.ek-steps__tab-icon svg {
+.ek-steps__tab-icon img {
   width: 28px;
   height: 28px;
 }
 
-.ek-steps__tab-icon svg path,
-.ek-steps__tab-icon svg circle,
-.ek-steps__tab-icon svg rect,
-.ek-steps__tab-icon svg line {
-  stroke: #003366;
-  transition: stroke 0.3s ease;
+.ek-steps__tab-icon .ek-steps__icon-selected {
+  display: none;
 }
 
-.ek-steps__tab.active .ek-steps__tab-icon svg path,
-.ek-steps__tab.active .ek-steps__tab-icon svg circle,
-.ek-steps__tab.active .ek-steps__tab-icon svg rect,
-.ek-steps__tab.active .ek-steps__tab-icon svg line {
-  stroke: #FFFFFF;
+.ek-steps__tab-icon .ek-steps__icon-unselected {
+  display: block;
+}
+
+.ek-steps__tab.active .ek-steps__tab-icon .ek-steps__icon-selected {
+  display: block;
+}
+
+.ek-steps__tab.active .ek-steps__tab-icon .ek-steps__icon-unselected {
+  display: none;
 }
 
 .ek-steps__tab-label {
