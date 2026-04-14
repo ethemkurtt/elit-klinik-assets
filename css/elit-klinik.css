@@ -1594,25 +1594,30 @@ img {
 }
 
 .ek-faq__icon {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  border-radius: 50%;
-  border: 2px solid #003366;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
 }
 
-.ek-faq__icon svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s ease;
+.ek-faq__icon img {
+  width: 32px;
+  height: 32px;
 }
 
-.ek-faq__item.active .ek-faq__icon svg {
-  transform: rotate(45deg);
+.ek-faq__icon .ek-faq__icon-minus {
+  display: none;
+}
+
+.ek-faq__item.active .ek-faq__icon .ek-faq__icon-plus {
+  display: none;
+}
+
+.ek-faq__item.active .ek-faq__icon .ek-faq__icon-minus {
+  display: block;
 }
 
 .ek-faq__answer {
