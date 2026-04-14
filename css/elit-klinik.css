@@ -394,10 +394,6 @@ img {
 .ek-hero {
   width: 100%;
   min-height: 100vh;
-  background-image: url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png') !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-color: #0a2a52 !important;
   position: relative;
   z-index: 1;
   padding: 36px 36px 48px 36px;
@@ -1131,6 +1127,7 @@ img {
 .ek-simulation__video {
   position: relative;
   width: 420px;
+  min-width: 420px;
   flex-shrink: 0;
   border-radius: 16px;
   overflow: hidden;
@@ -1144,12 +1141,14 @@ img {
   border-radius: 16px;
 }
 
-.ek-simulation__video video {
+.ek-simulation__video video,
+.ek-simulation__video iframe {
   display: none;
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 16px;
   background: #000;
+  border: none;
 }
 
 .ek-simulation__video.playing img,
