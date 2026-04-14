@@ -3,10 +3,10 @@
    =============================================================
    Sections:
    1. Mobile Hamburger Menu
-   2. Before/After Slider + Modal
+   2. Before/After Slider (click+drag only)
    3. Simulation Video Modal
    4. Steps Tabs
-   5. Videos Section Modal
+   5. Videos Section (inline play)
    6. FAQ Accordion
    ============================================================= */
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =============================================================
-     2. BEFORE/AFTER SLIDER + MODAL
+     2. BEFORE/AFTER SLIDER (click + drag only, no hover)
      ============================================================= */
 
   var slider = document.querySelector('.ek-results__slider');
@@ -88,36 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* Results Modal */
-  var resultsModal = document.querySelector('.ek-results__modal');
-  var resultsModalImg = document.querySelector('.ek-results__modal-img');
-  var resultsModalClose = document.querySelector('.ek-results__modal-close');
-  var thumbs = document.querySelectorAll('.ek-results__thumb');
-
-  if (resultsModal && resultsModalImg) {
-    thumbs.forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        var src = this.querySelector('img').src;
-        resultsModalImg.src = src;
-        resultsModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    if (resultsModalClose) {
-      resultsModalClose.addEventListener('click', function () {
-        resultsModal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
-
-    resultsModal.addEventListener('click', function (e) {
-      if (e.target === resultsModal) {
-        resultsModal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  }
+  /* Results thumbs - NO modal, just static */
 
 
   /* =============================================================
@@ -195,51 +166,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =============================================================
-     5. VIDEOS SECTION MODAL
+     5. VIDEOS SECTION - INLINE PLAY (no modal)
      ============================================================= */
 
   var videoCards = document.querySelectorAll('.ek-videos__card');
-  var videosModal = document.querySelector('.ek-videos__modal');
-  var videosModalClose = document.querySelector('.ek-videos__modal-close');
-  var videosModalContent = document.querySelector('.ek-videos__modal-content');
 
-  if (videoCards.length && videosModal) {
+  if (videoCards.length) {
     videoCards.forEach(function (card) {
       card.addEventListener('click', function () {
-        var videoUrl = this.getAttribute('data-video');
-        if (!videoUrl) return;
+        var video = this.querySelector('video');
+        if (!video) return;
 
-        var isYoutube = videoUrl.indexOf('youtube.com') !== -1 || videoUrl.indexOf('youtu.be') !== -1;
-
-        if (isYoutube) {
-          var videoId = '';
-          if (videoUrl.indexOf('youtu.be/') !== -1) {
-            videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
-          } else if (videoUrl.indexOf('v=') !== -1) {
-            videoId = videoUrl.split('v=')[1].split('&')[0];
-          }
-          videosModalContent.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" width="960" height="540" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        if (this.classList.contains('playing')) {
+          video.pause();
+          this.classList.remove('playing');
         } else {
-          videosModalContent.innerHTML = '<video src="' + videoUrl + '" controls autoplay style="width:960px;max-width:90vw;max-height:80vh;border-radius:12px;"></video>';
+          this.classList.add('playing');
+          video.play();
         }
-
-        videosModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
       });
-    });
-
-    function closeVideosModal() {
-      videosModal.classList.remove('active');
-      document.body.style.overflow = '';
-      if (videosModalContent) videosModalContent.innerHTML = '';
-    }
-
-    if (videosModalClose) {
-      videosModalClose.addEventListener('click', closeVideosModal);
-    }
-
-    videosModal.addEventListener('click', function (e) {
-      if (e.target === videosModal) closeVideosModal();
     });
   }
 
@@ -291,12 +236,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
 
-    // Results modal
-    if (resultsModal && resultsModal.classList.contains('active')) {
-      resultsModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
     // Simulation modal
     if (simModal && simModal.classList.contains('active')) {
       simModal.classList.remove('active');
@@ -305,13 +244,6 @@ document.addEventListener('DOMContentLoaded', function () {
         simModalVideo.pause();
         simModalVideo.currentTime = 0;
       }
-    }
-
-    // Videos modal
-    if (videosModal && videosModal.classList.contains('active')) {
-      videosModal.classList.remove('active');
-      document.body.style.overflow = '';
-      if (videosModalContent) videosModalContent.innerHTML = '';
     }
   });
 

@@ -68,6 +68,11 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: 'Sofia Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -389,10 +394,7 @@ img {
 .ek-hero {
   width: 100%;
   min-height: 100vh;
-  background-image: url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #0a2a52;
+  background: #0a2a52 url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png') no-repeat center / cover;
   position: relative;
   z-index: 1;
   padding: 36px 36px 48px 36px;
@@ -697,14 +699,14 @@ img {
 
 .ek-results__after {
   z-index: 2;
-  clip-path: inset(0 0 0 0%);
+  clip-path: inset(0 0 0 50%);
 }
 
 .ek-results__handle {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0%;
+  left: 50%;
   width: 3px;
   background: #FEFEFE;
   z-index: 10;
@@ -841,11 +843,11 @@ img {
 
 .ek-results__thumb {
   position: relative;
-  min-width: 280px;
-  height: 180px;
+  width: 320px;
+  min-width: 320px;
+  height: 320px;
   border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
   flex-shrink: 0;
   border: 2px solid transparent;
   transition: border-color 0.3s, transform 0.3s;
@@ -959,8 +961,8 @@ img {
 
 .ek-doctors__card {
   position: relative;
-  width: 220px;
-  height: 300px;
+  width: 324px;
+  height: 480px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
@@ -1008,7 +1010,8 @@ img {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 1;
+  width: 540px;
+  flex-shrink: 0;
 }
 
 .ek-doctors__title {
@@ -1495,6 +1498,25 @@ img {
   transform: scale(1.03);
 }
 
+/* Inline video (thumbnail hides, video plays in place) */
+.ek-videos__card video {
+  display: none;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #000;
+}
+
+.ek-videos__card.playing img,
+.ek-videos__card.playing .ek-videos__play {
+  display: none;
+}
+
+.ek-videos__card.playing video {
+  display: block;
+}
+
 .ek-videos__play {
   position: absolute;
   top: 50%;
@@ -1524,58 +1546,6 @@ img {
   width: 30px;
   height: 30px;
   margin-left: 3px;
-}
-
-.ek-videos__modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.92);
-  z-index: 10000;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-
-.ek-videos__modal.active {
-  display: flex;
-}
-
-.ek-videos__modal-close {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  z-index: 10001;
-}
-
-.ek-videos__modal-close:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.ek-videos__modal-close svg {
-  width: 24px;
-  height: 24px;
-}
-
-.ek-videos__modal video,
-.ek-videos__modal iframe {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 12px;
-  border: none;
 }
 
 
@@ -2120,8 +2090,9 @@ img {
   }
 
   .ek-results__thumb {
-    min-width: 220px;
-    height: 140px;
+    width: 260px;
+    min-width: 260px;
+    height: 260px;
   }
 
   .ek-results__cta {
@@ -2140,7 +2111,12 @@ img {
 
   .ek-doctors__card {
     width: 100%;
-    max-width: 320px;
+    max-width: 324px;
+    height: auto;
+  }
+
+  .ek-doctors__content {
+    width: 100%;
   }
 
   .ek-doctors__title {

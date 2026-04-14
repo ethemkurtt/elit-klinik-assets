@@ -5,11 +5,7 @@
 .ek-hero {
   width: 100%;
   min-height: 100vh;
-  background-image: url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png');
-  background-size: cover;
-
-  background-repeat: no-repeat;
-  background-color: #0a2a52;
+  background: #0a2a52 url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/header@3x-scaled.png') no-repeat center / cover;
   position: relative;
   z-index: 1;
   padding: 36px 36px 48px 36px;

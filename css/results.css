@@ -61,14 +61,14 @@
 
 .ek-results__after {
   z-index: 2;
-  clip-path: inset(0 0 0 0%);
+  clip-path: inset(0 0 0 50%);
 }
 
 .ek-results__handle {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0%;
+  left: 50%;
   width: 3px;
   background: #FEFEFE;
   z-index: 10;
@@ -213,11 +213,11 @@
 
 .ek-results__thumb {
   position: relative;
-  min-width: 280px;
-  height: 180px;
+  width: 320px;
+  min-width: 320px;
+  height: 320px;
   border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
   flex-shrink: 0;
   border: 2px solid transparent;
   transition: border-color 0.3s, transform 0.3s;
