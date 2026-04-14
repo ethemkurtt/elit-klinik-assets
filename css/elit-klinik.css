@@ -1862,7 +1862,169 @@ img {
 
 
 /* =============================================================
-   12. RESPONSIVE - 1200px
+   12. REVIEWS / TESTIMONIALS
+   ============================================================= */
+
+.ek-reviews {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 80px 36px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.ek-reviews__inner {
+  width: 100%;
+  max-width: 1368px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.ek-reviews__title {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+/* Scrollable cards row */
+
+.ek-reviews__track {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.ek-reviews__track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.ek-reviews__track::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.ek-reviews__track::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Review Card */
+
+.ek-reviews__card {
+  min-width: 380px;
+  max-width: 380px;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Header: avatar + name + stars */
+
+.ek-reviews__card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+
+.ek-reviews__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ek-reviews__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ek-reviews__name {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1a1a1a;
+}
+
+.ek-reviews__stars {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.ek-reviews__stars svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Review Text */
+
+.ek-reviews__text {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #555555;
+}
+
+/* Source (Google / Trustpilot) */
+
+.ek-reviews__source {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.ek-reviews__source-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.ek-reviews__source-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ek-reviews__source-label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #999999;
+}
+
+.ek-reviews__source-name {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #003366;
+}
+
+
+/* =============================================================
+   13. RESPONSIVE - 1200px
    ============================================================= */
 
 @media (max-width: 1200px) {
@@ -2203,6 +2365,22 @@ img {
     width: 32px;
     height: 32px;
     min-width: 32px;
+  }
+
+  /* Reviews */
+  .ek-reviews {
+    padding: 48px 20px;
+  }
+
+  .ek-reviews__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .ek-reviews__card {
+    min-width: 300px;
+    max-width: 300px;
+    padding: 24px 20px;
   }
 
   /* Footer */
