@@ -1157,7 +1157,8 @@ img {
   display: none;
 }
 
-.ek-simulation__video.playing video {
+.ek-simulation__video.playing video,
+.ek-simulation__video.playing iframe {
   display: block;
 }
 

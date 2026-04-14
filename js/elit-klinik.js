@@ -100,15 +100,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (simVideoWrap) {
     simVideoWrap.addEventListener('click', function () {
-      var video = this.querySelector('video');
-      if (!video) return;
+      if (this.classList.contains('playing')) return;
 
-      if (this.classList.contains('playing')) {
-        video.pause();
-        this.classList.remove('playing');
-      } else {
+      // Video element
+      var video = this.querySelector('video');
+      if (video) {
         this.classList.add('playing');
         video.play();
+        return;
+      }
+
+      // YouTube iframe
+      var iframe = this.querySelector('iframe');
+      if (iframe) {
+        var src = iframe.getAttribute('data-src') || iframe.getAttribute('src');
+        if (src) {
+          iframe.src = src;
+          iframe.style.display = 'block';
+        }
+        this.classList.add('playing');
       }
     });
   }
