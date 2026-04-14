@@ -57,10 +57,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    slider.addEventListener('mousedown', function (e) {
+    handle.style.pointerEvents = 'auto';
+    handle.style.cursor = 'ew-resize';
+
+    handle.addEventListener('mousedown', function (e) {
       e.preventDefault();
       isDragging = true;
-      requestUpdate(e.clientX);
     });
 
     document.addEventListener('mousemove', function (e) {
@@ -73,9 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
       isDragging = false;
     });
 
-    slider.addEventListener('touchstart', function (e) {
+    handle.addEventListener('touchstart', function (e) {
       isDragging = true;
-      requestUpdate(e.touches[0].clientX);
     }, { passive: true });
 
     document.addEventListener('touchmove', function (e) {

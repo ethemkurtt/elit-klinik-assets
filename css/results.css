@@ -69,11 +69,22 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 3px;
-  background: #FEFEFE;
+  width: 20px;
+  background: transparent;
   z-index: 10;
   transform: translateX(-50%);
-  pointer-events: none;
+  cursor: ew-resize;
+}
+
+.ek-results__handle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: #FEFEFE;
+  transform: translateX(-50%);
 }
 
 .ek-results__handle-btn {
