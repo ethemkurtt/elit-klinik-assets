@@ -1353,46 +1353,50 @@ img {
 
 .ek-steps__panel-badge {
   display: inline-flex;
+  justify-content: center;
   align-items: center;
-  padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  padding: 2px 10px;
+  background: #F1F8FE;
+  border-radius: 16px;
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 500;
-  font-size: 13px;
-  color: #FEFEFE;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0059B3;
   width: fit-content;
 }
 
 .ek-steps__panel-title {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 700;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 36px;
+  line-height: 40px;
   color: #FEFEFE;
 }
 
 .ek-steps__panel-desc {
   font-family: 'Sofia Pro', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 18px;
   line-height: 24px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #EFF3F8;
 }
 
 .ek-steps__panel-cta {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 24px;
-  width: fit-content;
+  padding: 12px 20px;
+  gap: 8px;
+  width: 372px;
+  height: 48px;
   background: #F98755;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: 'Sofia Pro', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   color: #FEFEFE;
   transition: background 0.2s;
 }
