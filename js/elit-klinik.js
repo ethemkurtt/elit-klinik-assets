@@ -221,12 +221,123 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =============================================================
+     7. QUIZ MODAL
+     ============================================================= */
+
+  var quiz = document.querySelector('.ek-quiz');
+
+  if (quiz) {
+    var quizSteps = quiz.querySelectorAll('.ek-quiz__step');
+    var progressSteps = quiz.querySelectorAll('.ek-quiz__progress-step');
+    var backBtn = quiz.querySelector('.ek-quiz__back');
+    var closeBtn = quiz.querySelector('.ek-quiz__close');
+    var currentStep = 0;
+    var answers = {};
+
+    function showStep(idx) {
+      currentStep = idx;
+      quizSteps.forEach(function (s, i) {
+        s.classList.toggle('active', i === idx);
+      });
+
+      // Progress bar
+      progressSteps.forEach(function (p, i) {
+        p.classList.remove('active', 'done');
+        if (i < idx) p.classList.add('done');
+        if (i === idx) p.classList.add('active');
+      });
+
+      // Back button visibility
+      if (backBtn) {
+        backBtn.classList.toggle('hidden', idx === 0);
+      }
+    }
+
+    // Open quiz
+    document.querySelectorAll('[data-open-quiz]').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        quiz.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        showStep(0);
+      });
+    });
+
+    // Close quiz
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        quiz.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Back button
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        if (currentStep > 0) {
+          showStep(currentStep - 1);
+        }
+      });
+    }
+
+    // Option click → save answer + go next
+    quiz.querySelectorAll('.ek-quiz__option').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var step = this.closest('.ek-quiz__step');
+        var stepIdx = Array.prototype.indexOf.call(quizSteps, step);
+
+        // Mark selected
+        step.querySelectorAll('.ek-quiz__option').forEach(function (o) {
+          o.classList.remove('selected');
+        });
+        this.classList.add('selected');
+
+        // Save answer
+        answers['step' + (stepIdx + 1)] = this.textContent.trim();
+
+        // Go to next after brief delay
+        setTimeout(function () {
+          if (stepIdx < quizSteps.length - 1) {
+            showStep(stepIdx + 1);
+          }
+        }, 300);
+      });
+    });
+
+    // Form submit
+    var quizForm = quiz.querySelector('.ek-quiz__form');
+    if (quizForm) {
+      quizForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(quizForm);
+        formData.forEach(function (value, key) {
+          answers[key] = value;
+        });
+
+        // TODO: Send to backend / webhook
+        console.log('Quiz answers:', answers);
+
+        // Show thank you or redirect
+        alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
+        quiz.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+  }
+
+
+  /* =============================================================
      GLOBAL: Escape key closes any active modal
      ============================================================= */
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    // No modals remaining - all videos play inline
+    var quizModal = document.querySelector('.ek-quiz.active');
+    if (quizModal) {
+      quizModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   });
 
 });
