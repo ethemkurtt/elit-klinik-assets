@@ -2922,7 +2922,6 @@ html.ek-quiz-open {
 /* Mobile-only helpers (hidden on desktop) */
 .ek-steps__mobile { display: none !important; }
 .ek-hero .ek-hero__circle { display: none !important; }
-.ek-hero .ek-hero__logos { display: none !important; }
 
 @media (max-width: 768px) {
 
