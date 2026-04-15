@@ -1191,6 +1191,35 @@ img {
   height: 28px;
 }
 
+.ek-simulation__cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 14px 28px;
+  height: 48px;
+  background: #F98755;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #FEFEFE;
+  text-decoration: none;
+  margin-top: 12px;
+  transition: background 0.2s;
+}
+
+.ek-simulation__cta:hover {
+  background: #e5774a;
+}
+
+.ek-simulation__cta--mobile {
+  display: none !important;
+}
+
 
 /* =============================================================
    8. STEPS
@@ -3243,6 +3272,31 @@ html.ek-quiz-open {
 
   .ek-simulation__video::before {
     display: none;
+  }
+
+  /* Mobile order: video → content → cta */
+  .ek-simulation__video { order: 0; }
+  .ek-simulation__content { order: 1; }
+  .ek-simulation__cta--mobile { order: 2; }
+
+  /* Hide desktop cta on mobile, show mobile cta */
+  .ek-simulation__content .ek-simulation__cta:not(.ek-simulation__cta--mobile) {
+    display: none !important;
+  }
+  .ek-simulation__cta--mobile {
+    display: flex !important;
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    background: #F98755;
+    color: #FEFEFE;
+    font-family: 'Sofia Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 8px;
   }
 
 
