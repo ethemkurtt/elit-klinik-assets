@@ -3064,7 +3064,7 @@ html.ek-quiz-open {
   .ek-footer__inner,
   .ek-footer__bottom,
   .ek-footer__bottom-inner {
-    display: contents;
+    display: contents !important;
   }
   .ek-footer__left { order: 1; padding: 48px 20px 24px; }
   .ek-footer__socials {
