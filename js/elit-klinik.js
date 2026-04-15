@@ -227,6 +227,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var quiz = document.querySelector('.ek-quiz');
 
   if (quiz) {
+    // Move quiz to <body> so position:fixed isn't broken by
+    // transformed Elementor ancestors
+    if (quiz.parentNode !== document.body) {
+      document.body.appendChild(quiz);
+    }
+
     var quizSteps = quiz.querySelectorAll('.ek-quiz__step');
     var progressSteps = quiz.querySelectorAll('.ek-quiz__progress > .ek-quiz__progress-step');
     var backBtn = quiz.querySelector('.ek-quiz__back');
@@ -253,22 +259,35 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    function openQuiz() {
+      // Re-parent to body every time in case Elementor re-wrapped it
+      if (quiz.parentNode !== document.body) {
+        document.body.appendChild(quiz);
+      }
+      quiz.classList.add('active');
+      document.body.classList.add('ek-quiz-open');
+      document.documentElement.classList.add('ek-quiz-open');
+      window.scrollTo(0, 0);
+      showStep(0);
+    }
+
+    function closeQuiz() {
+      quiz.classList.remove('active');
+      document.body.classList.remove('ek-quiz-open');
+      document.documentElement.classList.remove('ek-quiz-open');
+    }
+
     // Open quiz
     document.querySelectorAll('[data-open-quiz]').forEach(function (trigger) {
       trigger.addEventListener('click', function (e) {
         e.preventDefault();
-        quiz.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        showStep(0);
+        openQuiz();
       });
     });
 
     // Close quiz
     if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        quiz.classList.remove('active');
-        document.body.style.overflow = '';
-      });
+      closeBtn.addEventListener('click', closeQuiz);
     }
 
     // Back button
@@ -336,7 +355,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var quizModal = document.querySelector('.ek-quiz.active');
     if (quizModal) {
       quizModal.classList.remove('active');
-      document.body.style.overflow = '';
+      document.body.classList.remove('ek-quiz-open');
+      document.documentElement.classList.remove('ek-quiz-open');
     }
   });
 

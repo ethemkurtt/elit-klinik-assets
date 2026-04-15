@@ -2048,19 +2048,31 @@ img {
 
 .ek-quiz {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
   background: linear-gradient(180deg, #003366 0%, #E9EBED 100%);
-  z-index: 10000;
+  z-index: 999999;
   overflow-y: auto;
   flex-direction: column;
+  margin: 0 !important;
+  transform: none !important;
 }
 
 .ek-quiz.active {
-  display: flex;
+  display: flex !important;
+}
+
+body.ek-quiz-open {
+  overflow: hidden !important;
+}
+
+html.ek-quiz-open {
+  overflow: hidden !important;
 }
 
 /* Header */
@@ -2087,13 +2099,24 @@ img {
 }
 
 .ek-quiz__logo-icon {
-  width: 53px;
-  height: 53px;
+  width: 33.55px;
+  height: 33.55px;
+  flex-shrink: 0;
 }
 
 .ek-quiz__logo-text {
-  width: 203px;
-  height: 32px;
+  width: 128.32px;
+  height: 20.13px;
+  flex-shrink: 0;
+}
+
+.ek-quiz__logo-top {
+  gap: 13.42px;
+}
+
+.ek-quiz__logo-sub {
+  font-size: 11.56px;
+  line-height: 12px;
 }
 
 .ek-quiz__logo-sub {
@@ -2189,6 +2212,7 @@ img {
   gap: 12px;
   width: 100%;
   max-width: 996px;
+  margin: 32px auto 48px;
 }
 
 .ek-quiz__progress-step {
@@ -2887,5 +2911,401 @@ img {
 
   .ek-footer__socials {
     justify-content: center;
+  }
+}
+
+
+/* =============================================================
+   15. MOBILE OVERRIDE (Figma-faithful, ≤768px)
+   ============================================================= */
+
+/* Mobile-only helpers (hidden on desktop) */
+.ek-steps__mobile { display: none !important; }
+.ek-hero .ek-hero__circle { display: none !important; }
+.ek-hero .ek-hero__logos { display: none !important; }
+
+@media (max-width: 768px) {
+
+  /* ---------- HERO ---------- */
+  .ek-hero {
+    padding: 120px 24px 0 24px;
+    min-height: auto;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Mobile-only background overlay (desktop inline bg stays intact) */
+  .ek-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #0a2a52 url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/kapak-1.webp') no-repeat center top / cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .ek-hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ek-hero__inner {
+    align-items: center;
+    gap: 32px;
+    max-width: 100%;
+  }
+
+  .ek-hero__badge-bar,
+  .ek-hero__cards,
+  .ek-hero__google-card {
+    display: none !important;
+  }
+
+  .ek-hero__heading {
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .ek-hero__cta {
+    width: 100%;
+    max-width: 100%;
+    height: 56px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .ek-hero .ek-hero__logos {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .ek-hero .ek-hero__circle {
+    display: block !important;
+  }
+
+  .ek-hero__logos img {
+    height: 28px;
+    flex: 0 1 auto;
+    max-width: 20%;
+  }
+
+  /* Circular woman image */
+  .ek-hero__circle {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    margin: 16px auto 0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .ek-hero__circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+
+  /* ---------- RESULTS ---------- */
+  .ek-results {
+    padding: 56px 20px;
+  }
+
+  .ek-results__inner {
+    gap: 32px;
+  }
+
+  .ek-results__top {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ek-results__slider {
+    width: 100%;
+    height: 380px;
+    border-radius: 14px;
+  }
+
+  .ek-results__content {
+    text-align: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ek-results__subtitle {
+    font-size: 28px;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  .ek-results__title {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .ek-results__desc {
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .ek-results__gallery {
+    gap: 12px;
+    margin: 0 -20px;
+    padding: 0 20px 8px;
+  }
+
+  .ek-results__thumb {
+    width: 240px;
+    min-width: 240px;
+    height: 240px;
+  }
+
+  .ek-results__cta {
+    width: 100%;
+    max-width: 100%;
+    height: 56px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+
+  /* ---------- DOCTORS ---------- */
+  .ek-doctors {
+    padding: 56px 20px;
+  }
+
+  .ek-doctors__inner {
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .ek-doctors__title {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .ek-doctors__cards {
+    flex-direction: row;
+    gap: 12px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .ek-doctors__card {
+    width: calc(50% - 6px);
+    max-width: none;
+    height: 340px;
+    flex: 1;
+  }
+
+  .ek-doctors__card-name {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .ek-doctors__card-role {
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  .ek-doctors__content {
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ek-doctors__subtitle {
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+  }
+
+  .ek-doctors__desc {
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .ek-doctors__cta {
+    width: 100%;
+    max-width: 100%;
+    height: 56px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+
+  /* ---------- SIMULATION ---------- */
+  .ek-simulation {
+    padding: 56px 20px;
+    border-left: none;
+    border-top: 4px solid #F98755;
+  }
+
+  .ek-simulation__inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ek-simulation__video {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+  .ek-simulation__content {
+    text-align: center;
+    gap: 16px;
+  }
+
+  .ek-simulation__title {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .ek-simulation__desc {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .ek-simulation__video::before {
+    display: none;
+  }
+
+
+  /* ---------- STEPS (mobile: stacked cards) ---------- */
+  .ek-steps {
+    padding: 56px 20px;
+  }
+
+  .ek-steps__inner {
+    gap: 32px;
+  }
+
+  .ek-steps__header {
+    padding: 0;
+    gap: 16px;
+  }
+
+  .ek-steps__title {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .ek-steps__subtitle {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  /* Hide desktop tabs + content */
+  .ek-steps__tabs,
+  .ek-steps__content {
+    display: none !important;
+  }
+
+  /* Show mobile stacked cards */
+  .ek-steps__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .ek-steps__mcard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #FEFEFE;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 51, 102, 0.08);
+  }
+
+  .ek-steps__mcard-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ek-steps__mcard-body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 18px 22px;
+  }
+
+  .ek-steps__mcard-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    background: #F1F8FE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ek-steps__mcard-icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ek-steps__mcard-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .ek-steps__mcard-title {
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #F98755;
+    margin: 0;
+  }
+
+  .ek-steps__mcard-desc {
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #6E6E6E;
+    margin: 0;
+  }
+
+  .ek-steps__mobile-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    margin-top: 8px;
+    background: #F98755;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Sofia Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #FEFEFE;
+    cursor: pointer;
   }
 }
