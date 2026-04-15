@@ -3055,8 +3055,30 @@ html.ek-quiz-open {
     text-align: center;
   }
 
+  /* Reorder: contact → socials → map → copyright */
+  .ek-footer {
+    display: flex;
+    flex-direction: column;
+  }
+  .ek-footer__main,
+  .ek-footer__inner,
+  .ek-footer__bottom,
+  .ek-footer__bottom-inner {
+    display: contents;
+  }
+  .ek-footer__left { order: 1; padding: 48px 20px 24px; }
   .ek-footer__socials {
+    order: 2;
     justify-content: center;
+    padding: 0 20px 24px;
+    display: flex;
+    gap: 16px;
+  }
+  .ek-footer__map { order: 3; padding: 0 20px; }
+  .ek-footer__copyright {
+    order: 4;
+    text-align: center;
+    padding: 24px 20px 32px;
   }
 }
 
