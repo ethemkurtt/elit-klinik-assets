@@ -2842,8 +2842,17 @@ html.ek-quiz-open {
     padding: 0;
   }
 
-  .ek-videos__header {
+  .ek-videos__header:not(.ek-videos__header--mobile) {
+    display: none !important;
+  }
+
+  .ek-videos__header--mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
     padding: 0 20px;
+    text-align: center;
+    align-items: center;
   }
 
   .ek-videos__title {
@@ -2990,6 +2999,7 @@ html.ek-quiz-open {
 
 /* Mobile-only helpers (hidden on desktop) */
 .ek-steps__mobile { display: none !important; }
+.ek-videos__header--mobile { display: none !important; }
 .ek-hero .ek-hero__circle { display: none !important; }
 .ek-hero .ek-hero__logos { display: none !important; }
 .ek-results__cta--mobile { display: none !important; }
