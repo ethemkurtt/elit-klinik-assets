@@ -3332,7 +3332,7 @@ html.ek-quiz-open {
 
   /* Show mobile stacked cards */
   .ek-steps__mobile {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 20px;
     width: 100%;
