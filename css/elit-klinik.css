@@ -3084,8 +3084,8 @@ html.ek-quiz-open {
     height: 240px !important;
   }
 
-  /* Hide original CTA inside .ek-results__content on mobile */
-  .ek-results__top .ek-results__cta {
+  /* Hide original CTA on mobile (keep only .ek-results__cta--mobile) */
+  .ek-results__cta:not(.ek-results__cta--mobile) {
     display: none !important;
   }
 
