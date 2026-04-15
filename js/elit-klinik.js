@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (quiz) {
     var quizSteps = quiz.querySelectorAll('.ek-quiz__step');
-    var progressSteps = quiz.querySelectorAll('.ek-quiz__progress-step');
+    var progressSteps = quiz.querySelectorAll('.ek-quiz__progress > .ek-quiz__progress-step');
     var backBtn = quiz.querySelector('.ek-quiz__back');
     var closeBtn = quiz.querySelector('.ek-quiz__close');
     var currentStep = 0;
