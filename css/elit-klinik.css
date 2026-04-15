@@ -2928,8 +2928,8 @@ html.ek-quiz-open {
   /* ---------- HERO ---------- */
   .ek-hero {
     padding: 120px 24px 0 24px;
-    min-height: 750px !important;
-    height: 750px;
+    min-height: 650px !important;
+    height: 650px;
     text-align: center;
     position: relative;
     overflow: hidden;
