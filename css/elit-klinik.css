@@ -2489,6 +2489,18 @@ html.ek-quiz-open {
 @media (max-width: 768px) {
   .ek-quiz {
     background: linear-gradient(180deg, #003366 0%, #0a4a85 60%, #7a9bc4 100%);
+    overflow-x: hidden !important;
+  }
+
+  .ek-quiz__title-row,
+  .ek-quiz__progress,
+  .ek-quiz__steps,
+  .ek-quiz__options,
+  .ek-quiz__option,
+  .ek-quiz__form {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
   }
 
   .ek-quiz__header {
