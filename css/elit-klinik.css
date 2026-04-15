@@ -2975,26 +2975,12 @@ html.ek-quiz-open {
     max-width: 100%;
   }
 
-  /* Hide original hero CTA on mobile (keep only .ek-hero__cta--mobile) */
-  .ek-hero__cta:not(.ek-hero__cta--mobile) {
-    display: none !important;
-  }
-
-  .ek-hero__cta--mobile {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
+  .ek-hero__cta {
     width: 100%;
     max-width: 100%;
     height: 56px;
-    background: #F98755;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    font-family: 'Sofia Pro', sans-serif;
     font-size: 16px;
-    font-weight: 500;
-    color: #FEFEFE;
+    border-radius: 14px;
   }
 
   .ek-hero .ek-hero__logos {
