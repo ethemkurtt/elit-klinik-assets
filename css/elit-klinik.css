@@ -2923,6 +2923,7 @@ html.ek-quiz-open {
 .ek-steps__mobile { display: none !important; }
 .ek-hero .ek-hero__circle { display: none !important; }
 .ek-hero .ek-hero__logos { display: none !important; }
+.ek-results__cta--mobile { display: none !important; }
 
 @media (max-width: 768px) {
 
@@ -3029,66 +3030,81 @@ html.ek-quiz-open {
 
   /* ---------- RESULTS ---------- */
   .ek-results {
-    padding: 56px 20px;
+    padding: 48px 20px !important;
   }
 
   .ek-results__inner {
-    gap: 32px;
+    gap: 24px !important;
   }
 
   .ek-results__top {
-    flex-direction: column;
-    gap: 24px;
+    flex-direction: column !important;
+    gap: 20px !important;
   }
 
   .ek-results__slider {
-    width: 100%;
-    height: 380px;
-    border-radius: 14px;
+    width: 100% !important;
+    height: 300px !important;
+    border-radius: 14px !important;
   }
 
   .ek-results__content {
-    text-align: center;
-    align-items: center;
-    gap: 16px;
+    text-align: center !important;
+    align-items: center !important;
+    gap: 12px !important;
   }
 
   .ek-results__subtitle {
-    font-size: 28px;
-    line-height: 36px;
-    text-align: center;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    text-align: center !important;
   }
 
   .ek-results__title {
-    font-size: 32px;
-    line-height: 40px;
-    text-align: center;
+    font-size: 26px !important;
+    line-height: 32px !important;
+    text-align: center !important;
   }
 
   .ek-results__desc {
-    font-size: 15px;
-    line-height: 24px;
-    text-align: center;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    text-align: center !important;
   }
 
   .ek-results__gallery {
-    gap: 12px;
-    margin: 0 -20px;
-    padding: 0 20px 8px;
+    gap: 12px !important;
+    margin: 0 -20px !important;
+    padding: 0 20px 8px !important;
   }
 
   .ek-results__thumb {
-    width: 240px;
-    min-width: 240px;
-    height: 240px;
+    width: 240px !important;
+    min-width: 240px !important;
+    height: 240px !important;
   }
 
-  .ek-results__cta {
+  /* Hide original CTA inside .ek-results__content on mobile */
+  .ek-results__top .ek-results__cta {
+    display: none !important;
+  }
+
+  /* Show mobile-only CTA placed after gallery */
+  .ek-results__cta--mobile {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 100%;
     height: 56px;
+    margin-top: 8px;
+    background: #F98755;
+    border: none;
     border-radius: 14px;
+    cursor: pointer;
+    font-family: 'Sofia Pro', sans-serif;
     font-size: 15px;
+    font-weight: 500;
+    color: #FEFEFE;
   }
 
 
