@@ -2985,8 +2985,9 @@ html.ek-quiz-open {
     width: 100%;
   }
 
+  /* Circle hidden on mobile too — kapak-1.webp already contains the woman */
   .ek-hero .ek-hero__circle {
-    display: block !important;
+    display: none !important;
   }
 
   .ek-hero__logos img {
