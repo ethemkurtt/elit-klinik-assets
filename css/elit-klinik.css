@@ -1014,7 +1014,7 @@ img {
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: #555555;
+  color: #FEFEFE;
 }
 
 .ek-doctors__content {
@@ -3123,9 +3123,12 @@ html.ek-quiz-open {
   }
 
   .ek-doctors__title {
-    font-size: 32px;
-    line-height: 40px;
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 42px;
     text-align: center;
+    color: #003366;
   }
 
   .ek-doctors__cards {
@@ -3143,13 +3146,19 @@ html.ek-quiz-open {
   }
 
   .ek-doctors__card-name {
-    font-size: 14px;
-    line-height: 18px;
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FEFEFE !important;
   }
 
   .ek-doctors__card-role {
-    font-size: 11px;
-    line-height: 14px;
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    color: #FEFEFE !important;
   }
 
   .ek-doctors__inner {
@@ -3168,23 +3177,31 @@ html.ek-quiz-open {
   .ek-doctors__cta { order: 3; }
 
   .ek-doctors__subtitle {
-    font-size: 18px;
-    line-height: 26px;
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
     text-align: center;
+    color: #2E3033;
   }
 
   .ek-doctors__desc {
-    font-size: 15px;
-    line-height: 24px;
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
     text-align: center;
+    color: #6E6E6E;
   }
 
   .ek-doctors__cta {
     width: 100%;
     max-width: 100%;
-    height: 56px;
-    border-radius: 14px;
-    font-size: 15px;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #F98755;
+    color: #FEFEFE;
   }
 
 
