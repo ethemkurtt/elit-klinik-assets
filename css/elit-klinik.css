@@ -2867,16 +2867,18 @@ html.ek-quiz-open {
   }
 
   /* Horizontal scroll slider */
-  .ek-videos__grid {
+  .ek-videos .ek-videos__grid {
+    display: flex !important;
     flex-direction: row !important;
+    justify-content: flex-start !important;
     align-items: stretch;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
     gap: 16px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 20px 16px;
+    padding: 4px 24px 16px;
     margin: 0 -20px;
     scrollbar-width: none;
   }
@@ -2885,10 +2887,10 @@ html.ek-quiz-open {
     display: none;
   }
 
-  .ek-videos__card {
-    flex: 0 0 auto;
-    width: calc(100vw - 40px);
-    max-width: none;
+  .ek-videos .ek-videos__card {
+    flex: 0 0 auto !important;
+    width: calc(100vw - 48px) !important;
+    max-width: none !important;
     scroll-snap-align: center;
     border-radius: 16px;
   }
