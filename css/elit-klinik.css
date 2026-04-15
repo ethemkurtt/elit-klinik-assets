@@ -2846,7 +2846,8 @@ html.ek-quiz-open {
     display: none !important;
   }
 
-  .ek-videos__header--mobile {
+  .ek-videos .ek-videos__header--mobile,
+  .ek-videos__header.ek-videos__header--mobile {
     display: flex !important;
     flex-direction: column;
     gap: 12px;
