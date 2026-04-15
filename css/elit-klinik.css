@@ -2986,8 +2986,12 @@ html.ek-quiz-open {
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    width: 100%;
+    width: 267px;
+    max-width: 100%;
+    height: 28px;
+    opacity: 0.8;
+    margin: 0 auto;
+    gap: 0;
   }
 
   /* Circle hidden on mobile too — kapak-1.webp already contains the woman */
@@ -2997,8 +3001,10 @@ html.ek-quiz-open {
 
   .ek-hero__logos img {
     height: 28px;
-    flex: 0 1 auto;
-    max-width: 20%;
+    width: auto;
+    flex: 0 0 auto;
+    max-width: none;
+    object-fit: contain;
   }
 
   /* Circular woman image */
