@@ -2886,21 +2886,21 @@ html.ek-quiz-open {
 
   .ek-videos__card {
     flex: 0 0 auto;
-    width: calc(100vw - 80px);
-    max-width: 320px;
+    width: calc(100vw - 40px);
+    max-width: none;
     scroll-snap-align: center;
     border-radius: 16px;
   }
 
   .ek-videos__card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
   }
 
   .ek-videos__card video {
     width: 100%;
-    height: 200px;
+    height: 220px;
   }
 
   /* Cleaner play button */
