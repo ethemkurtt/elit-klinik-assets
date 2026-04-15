@@ -3192,6 +3192,7 @@ html.ek-quiz-open {
     line-height: 28px;
     text-align: center;
     color: #6E6E6E;
+    margin-top: -24px;
   }
 
   .ek-doctors__cta {
