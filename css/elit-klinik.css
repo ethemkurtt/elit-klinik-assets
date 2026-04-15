@@ -3100,7 +3100,9 @@ html.ek-quiz-open {
   }
 
   /* Hide original CTA on mobile (keep only .ek-results__cta--mobile) */
-  .ek-results__cta:not(.ek-results__cta--mobile) {
+  .ek-results__cta:not(.ek-results__cta--mobile),
+  .ek-results .ek-hero__cta,
+  .ek-results__cta-wrapper .ek-hero__cta {
     display: none !important;
   }
 
