@@ -3304,6 +3304,30 @@ html.ek-quiz-open {
   color: #FEFEFE;
 }
 
+/* Upload Submit Button */
+.ek-quiz__upload-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  height: 56px;
+  background: #F98755;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #FEFEFE;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.ek-quiz__upload-submit:hover {
+  background: #e0764a;
+}
+
 /* Mobile upload */
 @media (max-width: 768px) {
   .ek-quiz__upload {

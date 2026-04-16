@@ -453,6 +453,17 @@ document.addEventListener('DOMContentLoaded', function () {
       // Reset file input for re-use
       if (uploadInput) uploadInput.value = '';
     }
+
+    // Final submit button (step 8)
+    var uploadSubmit = quiz.querySelector('.ek-quiz__upload-submit');
+    if (uploadSubmit) {
+      uploadSubmit.addEventListener('click', function () {
+        console.log('Final quiz answers:', answers);
+        // TODO: Send to backend / webhook
+        alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
+        closeQuiz();
+      });
+    }
   }
 
 
