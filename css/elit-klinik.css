@@ -3062,7 +3062,7 @@ html.ek-quiz-open {
   color: #FBFBFB;
 }
 
-/* Submit Button */
+/* Submit Button - default (disabled look) */
 .ek-quiz__submit {
   display: flex;
   justify-content: center;
@@ -3072,20 +3072,30 @@ html.ek-quiz-open {
   width: 100%;
   max-width: 658px;
   height: 48px;
-  background: none;
-  border: 1px solid #003366;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
-  cursor: pointer;
+  cursor: not-allowed;
   font-family: 'Sofia Pro', sans-serif;
   font-size: 16px;
-  font-weight: 400;
-  color: #003366;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
   margin: 0 auto;
+  pointer-events: none;
 }
 
-.ek-quiz__submit:hover {
-  background: rgba(0, 51, 102, 0.1);
+/* Submit Button - active (all fields filled) */
+.ek-quiz__submit.ready {
+  background: #003366;
+  border: 1px solid #003366;
+  color: #FEFEFE;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.ek-quiz__submit.ready:hover {
+  background: #002244;
 }
 
 /* ---- Quiz Upload Step (Photo) ---- */

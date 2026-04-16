@@ -353,19 +353,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Form submit
     var quizForm = quiz.querySelector('.ek-quiz__form');
+    var quizSubmitBtn = quizForm ? quizForm.querySelector('.ek-quiz__submit') : null;
+
     if (quizForm) {
+      // Check if all required fields are filled
+      function checkFormReady() {
+        var allFilled = true;
+        quizForm.querySelectorAll('input[required]').forEach(function (input) {
+          if (input.type === 'checkbox') {
+            if (!input.checked) allFilled = false;
+          } else {
+            if (!input.value.trim()) allFilled = false;
+          }
+        });
+        if (quizSubmitBtn) {
+          quizSubmitBtn.classList.toggle('ready', allFilled);
+        }
+      }
+
+      // Listen to all inputs
+      quizForm.querySelectorAll('input').forEach(function (input) {
+        input.addEventListener('input', checkFormReady);
+        input.addEventListener('change', checkFormReady);
+      });
+
       quizForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (quizSubmitBtn && !quizSubmitBtn.classList.contains('ready')) return;
 
         var formData = new FormData(quizForm);
         formData.forEach(function (value, key) {
           answers[key] = value;
         });
 
-        // Save form data
         console.log('Quiz answers:', answers);
 
-        // Find which step the form is in, go to next step
+        // Go to next step (photo upload)
         var formStep = quizForm.closest('.ek-quiz__step');
         var formStepIdx = Array.prototype.indexOf.call(quizSteps, formStep);
         if (formStepIdx < quizSteps.length - 1) {
