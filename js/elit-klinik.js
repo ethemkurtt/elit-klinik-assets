@@ -323,6 +323,34 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    // Quiz phone country dropdown
+    var quizPhoneSelect = quiz.querySelector('.ek-quiz__phone-select');
+    if (quizPhoneSelect) {
+      quizPhoneSelect.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var dd = this.closest('.ek-quiz__phone-wrap').querySelector('.ek-quiz__country-dropdown');
+        if (dd) dd.classList.toggle('open');
+      });
+    }
+
+    quiz.querySelectorAll('.ek-quiz__country-option').forEach(function (opt) {
+      opt.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wrap = this.closest('.ek-quiz__phone-wrap');
+        var flag = wrap.querySelector('.ek-quiz__phone-flag');
+        var code = wrap.querySelector('.ek-quiz__phone-code');
+        if (flag) flag.src = this.querySelector('img').src;
+        if (code) code.textContent = this.getAttribute('data-code');
+        this.closest('.ek-quiz__country-dropdown').classList.remove('open');
+      });
+    });
+
+    // Close quiz dropdowns on outside click
+    document.addEventListener('click', function () {
+      var dd = quiz.querySelector('.ek-quiz__country-dropdown.open');
+      if (dd) dd.classList.remove('open');
+    });
+
     // Form submit
     var quizForm = quiz.querySelector('.ek-quiz__form');
     if (quizForm) {
