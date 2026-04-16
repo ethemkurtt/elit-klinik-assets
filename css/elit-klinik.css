@@ -1607,12 +1607,8 @@ img {
   flex-direction: column;
 }
 
-.ek-faq__item {
+.ek-faq__item + .ek-faq__item {
   border-top: 1px solid #E0E0E0;
-}
-
-.ek-faq__item:last-child {
-  border-bottom: 1px solid #E0E0E0;
 }
 
 .ek-faq__question {
@@ -1698,7 +1694,7 @@ img {
   width: fit-content;
   background: #F98755;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   cursor: pointer;
   font-family: 'Sofia Pro', sans-serif;
   font-size: 14px;
