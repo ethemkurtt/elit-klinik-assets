@@ -3280,16 +3280,16 @@ html.ek-quiz-open {
 
 /* Upload button inside angle card */
 .ek-quiz__upload-angle-btn {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 12px;
+  padding: 6px 14px;
   background: #003366;
   border: none;
   border-radius: 8px;
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 12px;
   color: #FEFEFE;
   cursor: pointer;
   margin-top: 4px;
@@ -3389,9 +3389,9 @@ html.ek-quiz-open {
     display: none !important;
   }
 
-  /* Hide "Bilgisayardan yüklemek için;" title on mobile */
   .ek-quiz__upload-section--pc .ek-quiz__upload-section-title {
-    display: none !important;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .ek-quiz__upload {
@@ -3437,9 +3437,9 @@ html.ek-quiz-open {
     line-height: 14px;
   }
 
-  /* Mobile upload button inside card */
   .ek-quiz__upload-angle-btn {
-    display: flex !important;
+    font-size: 11px;
+    padding: 5px 10px;
   }
 
   .ek-quiz__upload-angle-preview {
