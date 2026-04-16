@@ -257,6 +257,30 @@ document.addEventListener('DOMContentLoaded', function () {
       if (backBtn) {
         backBtn.classList.toggle('hidden', idx === 0);
       }
+
+      // Generate QR when reaching the upload step (last step)
+      if (idx === quizSteps.length - 1) {
+        generateUploadQR();
+      }
+    }
+
+    function generateUploadQR() {
+      var qrImg = quiz.querySelector('.ek-quiz__upload-qr-img');
+      if (!qrImg) return;
+
+      // Build quiz data from answers (only text answers, not files)
+      var textAnswers = {};
+      Object.keys(answers).forEach(function (key) {
+        if (typeof answers[key] === 'string') {
+          textAnswers[key] = answers[key];
+        }
+      });
+
+      var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(textAnswers))));
+      var currentUrl = window.location.origin + window.location.pathname;
+      var qrUrl = currentUrl + '?quiz_data=' + encoded;
+
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(qrUrl);
     }
 
     function openQuiz() {
@@ -275,6 +299,42 @@ document.addEventListener('DOMContentLoaded', function () {
       quiz.classList.remove('active');
       document.body.classList.remove('ek-quiz-open');
       document.documentElement.classList.remove('ek-quiz-open');
+    }
+
+    // Check URL for quiz_data (phone scanned QR)
+    var urlParams = new URLSearchParams(window.location.search);
+    var quizData = urlParams.get('quiz_data');
+    if (quizData) {
+      try {
+        var decoded = JSON.parse(decodeURIComponent(escape(atob(quizData))));
+        // Load answers
+        Object.keys(decoded).forEach(function (key) {
+          answers[key] = decoded[key];
+        });
+
+        // Fill form fields if they exist
+        var formInputs = quiz.querySelectorAll('.ek-quiz__form input');
+        formInputs.forEach(function (input) {
+          if (answers[input.name]) {
+            input.value = answers[input.name];
+          }
+        });
+
+        // Open quiz directly at upload step
+        if (quiz.parentNode !== document.body) {
+          document.body.appendChild(quiz);
+        }
+        quiz.classList.add('active');
+        document.body.classList.add('ek-quiz-open');
+        document.documentElement.classList.add('ek-quiz-open');
+        showStep(quizSteps.length - 1);
+
+        // Clean URL without reload
+        var cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+      } catch (e) {
+        console.warn('Invalid quiz data in URL');
+      }
     }
 
     // Open quiz

@@ -3108,6 +3108,62 @@ html.ek-quiz-open {
   max-width: 985px;
 }
 
+/* Subtitle */
+.ek-quiz__upload-subtitle {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+/* QR Section (desktop only) */
+.ek-quiz__upload-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.ek-quiz__upload-qr-label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+.ek-quiz__upload-qr-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 24px;
+  gap: 16px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ek-quiz__upload-qr-text {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #F1F8FE;
+}
+
+.ek-quiz__upload-qr-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+}
+
 /* Section label above box */
 .ek-quiz__upload-section-label {
   font-family: 'Sofia Pro', sans-serif;
@@ -3345,8 +3401,18 @@ html.ek-quiz-open {
 /* Mobile upload */
 @media (max-width: 768px) {
   .ek-quiz__upload {
-    gap: 20px;
+    gap: 16px;
     max-width: 100%;
+  }
+
+  .ek-quiz__upload-subtitle {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  /* Hide QR on mobile */
+  .ek-quiz__upload-qr {
+    display: none !important;
   }
 
   .ek-quiz__upload-subtitle {
