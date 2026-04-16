@@ -932,17 +932,18 @@ document.addEventListener('DOMContentLoaded', function () {
         var tabName = tabContent ? tabContent.getAttribute('data-tab') : '';
         var webhookType = (tabName === 'appointment') ? 'appointment_request' : 'callback_request';
 
-        // Map Turkish field names to English keys
+        // Unified payload — same keys for every form.
+        // Fields not applicable to the current form type are sent as empty strings.
         var mapped = {
           first_name: data.ad || '',
           last_name: data.soyad || '',
           phone: data.telefon || '',
           phone_country_code: data.phone_country_code || '',
           district: data.ilce || '',
-          gender: data.gender || ''
+          gender: data.gender || '',
+          appointment_date: data.gun || '',
+          appointment_time: data.saat || ''
         };
-        if (data.gun) mapped.appointment_date = data.gun;
-        if (data.saat) mapped.appointment_time = data.saat;
 
         var submitBtn = form.querySelector('.ek-contact__submit');
 
