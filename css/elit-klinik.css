@@ -3658,14 +3658,33 @@ html.ek-quiz-open {
 
   .ek-quiz__title-row {
     height: auto;
+    min-height: 40px;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ek-quiz__back {
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+  }
+
+  .ek-quiz__back svg {
+    width: 24px;
+    height: 24px;
   }
 
   .ek-quiz__heading {
     font-family: 'Sofia Pro', sans-serif;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 20px;
+    line-height: 28px;
     color: #FEFEFE;
+    padding: 0 40px;
   }
 
   .ek-quiz__progress {

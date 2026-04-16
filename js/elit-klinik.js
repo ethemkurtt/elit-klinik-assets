@@ -312,13 +312,33 @@ document.addEventListener('DOMContentLoaded', function () {
           answers[key] = decoded[key];
         });
 
+        // Mark previous step options as selected
+        quizSteps.forEach(function (step, stepIdx) {
+          var savedAnswer = answers['step' + (stepIdx + 1)];
+          if (savedAnswer) {
+            step.querySelectorAll('.ek-quiz__option').forEach(function (opt) {
+              if (opt.textContent.trim() === savedAnswer) {
+                opt.classList.add('selected');
+              }
+            });
+          }
+        });
+
         // Fill form fields if they exist
         var formInputs = quiz.querySelectorAll('.ek-quiz__form input');
         formInputs.forEach(function (input) {
-          if (answers[input.name]) {
+          if (input.type === 'checkbox') {
+            if (answers[input.name]) input.checked = true;
+          } else if (answers[input.name]) {
             input.value = answers[input.name];
           }
         });
+
+        // Update phone code if saved
+        if (answers['phone_code']) {
+          var phoneCode = quiz.querySelector('.ek-quiz__phone-code');
+          if (phoneCode) phoneCode.textContent = answers['phone_code'];
+        }
 
         // Open quiz directly at upload step
         if (quiz.parentNode !== document.body) {
