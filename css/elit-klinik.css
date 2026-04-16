@@ -2072,6 +2072,328 @@ img {
 
 
 /* =============================================================
+   11b. CONTACT SLIDE-IN PANEL
+   ============================================================= */
+
+.ek-contact {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 591px;
+  background: #FEFEFE;
+  box-shadow: -2px 0px 2px rgba(10, 13, 18, 0.2);
+  z-index: 999998;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+}
+
+.ek-contact.active {
+  display: flex;
+  transform: translateX(0);
+}
+
+.ek-contact__overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999997;
+}
+
+.ek-contact__overlay.active {
+  display: block;
+}
+
+.ek-contact__close {
+  position: absolute;
+  left: 36px;
+  top: 36px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ek-contact__close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ek-contact__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 92px 54px 54px;
+  gap: 48px;
+  flex: 1;
+}
+
+/* Segmented Control */
+.ek-contact__tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  width: 100%;
+  max-width: 415px;
+  height: 48px;
+  background: rgba(188, 188, 188, 0.15);
+  border-radius: 12px;
+}
+
+.ek-contact__tab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  height: 44px;
+  flex: 1;
+  border: none;
+  background: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #2E3033;
+  transition: all 0.2s;
+}
+
+.ek-contact__tab.active {
+  background: #003366;
+  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+  color: #FEFEFE;
+}
+
+/* Form */
+.ek-contact__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.ek-contact__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.ek-contact__label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #2E3033;
+  letter-spacing: -0.5px;
+}
+
+.ek-contact__label--sm {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+/* Radio Group */
+.ek-contact__radios {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+}
+
+.ek-contact__radio {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  flex: 1;
+  height: 52px;
+  background: #FEFEFE;
+  border: 1px solid #F1F8FE;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.ek-contact__radio.selected {
+  border: 1.5px solid #003366;
+}
+
+.ek-contact__radio-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #F1F8FE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border 0.2s;
+}
+
+.ek-contact__radio.selected .ek-contact__radio-dot {
+  border-color: #003366;
+}
+
+.ek-contact__radio-dot::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #003366;
+  transition: all 0.2s;
+}
+
+.ek-contact__radio.selected .ek-contact__radio-dot::after {
+  width: 8px;
+  height: 8px;
+}
+
+.ek-contact__radio-label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #2E3033;
+  letter-spacing: -0.5px;
+}
+
+/* Input Row */
+.ek-contact__row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+}
+
+.ek-contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.ek-contact__input {
+  box-sizing: border-box;
+  padding: 12px 16px;
+  height: 48px;
+  background: #FEFEFE;
+  border: 1px solid #EFF3F8;
+  border-radius: 8px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2E3033;
+  outline: none;
+  width: 100%;
+}
+
+.ek-contact__input::placeholder {
+  color: #6E6E6E;
+}
+
+.ek-contact__input:focus {
+  border-color: #003366;
+}
+
+/* Phone Input */
+.ek-contact__phone {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  height: 48px;
+  background: #FEFEFE;
+  border: 1px solid #EFF3F8;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.ek-contact__phone-flag {
+  width: 28px;
+  height: 20px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ek-contact__phone-code {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #2E3033;
+  letter-spacing: -0.5px;
+}
+
+.ek-contact__phone-chevron {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.ek-contact__phone-input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #2E3033;
+  outline: none;
+  letter-spacing: -0.5px;
+}
+
+.ek-contact__phone-input::placeholder {
+  color: #6E6E6E;
+}
+
+/* Submit */
+.ek-contact__submit {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 382px;
+  height: 48px;
+  background: #FEFEFE;
+  border: 1.5px solid #003366;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #003366;
+  transition: background 0.2s;
+  margin: 0 auto;
+}
+
+.ek-contact__submit:hover {
+  background: rgba(0, 51, 102, 0.06);
+}
+
+
+/* =============================================================
    12. QUIZ MODAL
    ============================================================= */
 

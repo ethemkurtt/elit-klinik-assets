@@ -347,6 +347,104 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* =============================================================
+     8. CONTACT SLIDE-IN PANEL
+     ============================================================= */
+
+  var contactPanel = document.querySelector('.ek-contact');
+  var contactOverlay = document.querySelector('.ek-contact__overlay');
+
+  if (contactPanel) {
+    // Move to body
+    if (contactPanel.parentNode !== document.body) {
+      document.body.appendChild(contactPanel);
+    }
+    if (contactOverlay && contactOverlay.parentNode !== document.body) {
+      document.body.appendChild(contactOverlay);
+    }
+
+    function openContact() {
+      if (contactPanel.parentNode !== document.body) {
+        document.body.appendChild(contactPanel);
+      }
+      if (contactOverlay && contactOverlay.parentNode !== document.body) {
+        document.body.appendChild(contactOverlay);
+      }
+      // Force reflow for transition
+      contactPanel.style.display = 'flex';
+      contactPanel.offsetHeight;
+      contactPanel.classList.add('active');
+      if (contactOverlay) contactOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeContact() {
+      contactPanel.classList.remove('active');
+      if (contactOverlay) contactOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        if (!contactPanel.classList.contains('active')) {
+          contactPanel.style.display = 'none';
+        }
+      }, 350);
+    }
+
+    // Open triggers
+    document.querySelectorAll('[data-open-contact]').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        openContact();
+      });
+    });
+
+    // Close button
+    var contactClose = contactPanel.querySelector('.ek-contact__close');
+    if (contactClose) {
+      contactClose.addEventListener('click', closeContact);
+    }
+
+    // Overlay click closes
+    if (contactOverlay) {
+      contactOverlay.addEventListener('click', closeContact);
+    }
+
+    // Tab switching
+    var contactTabs = contactPanel.querySelectorAll('.ek-contact__tab');
+    contactTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        contactTabs.forEach(function (t) { t.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // Radio selection
+    var contactRadios = contactPanel.querySelectorAll('.ek-contact__radio');
+    contactRadios.forEach(function (radio) {
+      radio.addEventListener('click', function () {
+        contactRadios.forEach(function (r) { r.classList.remove('selected'); });
+        this.classList.add('selected');
+      });
+    });
+
+    // Form submit
+    var contactForm = contactPanel.querySelector('.ek-contact__form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var formData = new FormData(contactForm);
+        var data = {};
+        formData.forEach(function (val, key) { data[key] = val; });
+        // Selected gender
+        var selectedRadio = contactPanel.querySelector('.ek-contact__radio.selected .ek-contact__radio-label');
+        if (selectedRadio) data.cinsiyet = selectedRadio.textContent.trim();
+        console.log('Contact form:', data);
+        alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
+        closeContact();
+      });
+    }
+  }
+
+
+  /* =============================================================
      GLOBAL: Escape key closes any active modal
      ============================================================= */
 
@@ -357,6 +455,14 @@ document.addEventListener('DOMContentLoaded', function () {
       quizModal.classList.remove('active');
       document.body.classList.remove('ek-quiz-open');
       document.documentElement.classList.remove('ek-quiz-open');
+    }
+    // Also close contact panel
+    var contactActive = document.querySelector('.ek-contact.active');
+    if (contactActive) {
+      contactActive.classList.remove('active');
+      var overlay = document.querySelector('.ek-contact__overlay.active');
+      if (overlay) overlay.classList.remove('active');
+      document.body.style.overflow = '';
     }
   });
 
