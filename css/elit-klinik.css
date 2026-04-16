@@ -471,7 +471,7 @@ img {
 .ek-hero__cards {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: stretch;
   gap: 16px;
   width: 100%;
 }
@@ -484,24 +484,23 @@ img {
   padding: 16px 24px;
   gap: 12px;
   flex: 1;
-  height: 127px;
+  min-height: 127px;
   background: rgba(254, 254, 254, 0.1);
   border-radius: 12px;
+  box-sizing: border-box;
 }
 
 .ek-hero__card-icon {
-  width: 24px;
-  height: 24px;
-  background: #F1F8FE;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
+.ek-hero__card-icon img,
 .ek-hero__card-icon svg {
-  width: 12px;
-  height: 12px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .ek-hero__card-text {
@@ -522,10 +521,11 @@ img {
   flex-direction: column;
   align-items: center;
   flex: 1;
-  height: 127px;
+  min-height: 127px;
   background: rgba(254, 254, 254, 0.1);
   border-radius: 12px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .ek-hero__google-bar {
