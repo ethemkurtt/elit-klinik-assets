@@ -398,89 +398,91 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ---- Photo Upload Step ---- */
-    var uploadDrop = quiz.querySelector('.ek-quiz__upload-drop');
     var uploadInput = quiz.querySelector('.ek-quiz__upload-input');
     var angleCards = quiz.querySelectorAll('.ek-quiz__upload-angle');
-    var activeAngle = null;
+    var uploadSubmit = quiz.querySelector('.ek-quiz__upload-submit');
+    var activeAngleCard = null;
 
-    if (uploadDrop && uploadInput) {
-      // Click to open file picker
-      uploadDrop.addEventListener('click', function () {
-        uploadInput.click();
+    function checkUploadReady() {
+      var allUploaded = true;
+      angleCards.forEach(function (card) {
+        if (!card.classList.contains('uploaded')) allUploaded = false;
       });
-
-      // Drag & drop
-      uploadDrop.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        this.style.background = 'rgba(255,255,255,0.1)';
-      });
-
-      uploadDrop.addEventListener('dragleave', function () {
-        this.style.background = '';
-      });
-
-      uploadDrop.addEventListener('drop', function (e) {
-        e.preventDefault();
-        this.style.background = '';
-        var files = e.dataTransfer.files;
-        if (files.length) handleUploadedFile(files[0]);
-      });
-
-      // File input change
-      uploadInput.addEventListener('change', function () {
-        if (this.files.length) handleUploadedFile(this.files[0]);
-      });
+      if (uploadSubmit) {
+        uploadSubmit.classList.toggle('ready', allUploaded);
+      }
     }
 
-    // Click angle card → set active angle, open file picker
+    // Click angle card → open file picker
     angleCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        activeAngle = this.getAttribute('data-angle');
+      card.addEventListener('click', function (e) {
+        // Don't open picker if clicking the remove button
+        if (e.target.closest('.ek-quiz__upload-angle-remove')) return;
+        if (this.classList.contains('uploaded')) return;
+        activeAngleCard = this;
         if (uploadInput) uploadInput.click();
       });
     });
 
-    function handleUploadedFile(file) {
-      if (!file.type.startsWith('image/')) return;
+    // File input change
+    if (uploadInput) {
+      uploadInput.addEventListener('change', function () {
+        if (!this.files.length || !activeAngleCard) return;
+        var file = this.files[0];
+        if (!file.type.startsWith('image/')) return;
 
-      // Save to answers
-      var angleName = activeAngle || 'photo';
-      answers[angleName] = file;
+        var card = activeAngleCard;
+        var angleName = card.getAttribute('data-angle');
+        answers[angleName] = file;
 
-      // Mark angle card as uploaded
-      if (activeAngle) {
-        angleCards.forEach(function (card) {
-          if (card.getAttribute('data-angle') === activeAngle) {
-            card.classList.add('uploaded');
-            var label = card.querySelector('.ek-quiz__upload-angle-label');
-            if (label) label.textContent = '✓ Yüklendi';
-          }
-        });
-        activeAngle = null;
-      }
+        // Read and show preview
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          // Hide icon and label
+          var icon = card.querySelector('.ek-quiz__upload-angle-icon');
+          var label = card.querySelector('.ek-quiz__upload-angle-label');
+          if (icon) icon.style.display = 'none';
+          if (label) label.style.display = 'none';
 
-      // Show preview in drop area
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var preview = uploadDrop.querySelector('.ek-quiz__upload-preview');
-        if (!preview) {
-          preview = document.createElement('img');
-          preview.className = 'ek-quiz__upload-preview';
-          preview.style.cssText = 'max-width:120px;max-height:80px;border-radius:8px;margin-top:8px;';
-          uploadDrop.appendChild(preview);
-        }
-        preview.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
+          // Create preview wrapper
+          var previewWrap = document.createElement('div');
+          previewWrap.className = 'ek-quiz__upload-angle-preview';
 
-      // Reset file input for re-use
-      if (uploadInput) uploadInput.value = '';
+          var img = document.createElement('img');
+          img.src = e.target.result;
+
+          var removeBtn = document.createElement('button');
+          removeBtn.className = 'ek-quiz__upload-angle-remove';
+          removeBtn.innerHTML = '<svg viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M4 12l8-8" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/></svg>';
+          removeBtn.addEventListener('click', function (ev) {
+            ev.stopPropagation();
+            // Remove preview, restore icon/label
+            previewWrap.remove();
+            if (icon) icon.style.display = '';
+            if (label) label.style.display = '';
+            card.classList.remove('uploaded');
+            delete answers[angleName];
+            checkUploadReady();
+          });
+
+          previewWrap.appendChild(img);
+          previewWrap.appendChild(removeBtn);
+          card.appendChild(previewWrap);
+          card.classList.add('uploaded');
+          checkUploadReady();
+        };
+        reader.readAsDataURL(file);
+
+        // Reset
+        this.value = '';
+        activeAngleCard = null;
+      });
     }
 
     // Final submit button (step 8)
-    var uploadSubmit = quiz.querySelector('.ek-quiz__upload-submit');
     if (uploadSubmit) {
       uploadSubmit.addEventListener('click', function () {
+        if (!this.classList.contains('ready')) return;
         console.log('Final quiz answers:', answers);
         // TODO: Send to backend / webhook
         alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
