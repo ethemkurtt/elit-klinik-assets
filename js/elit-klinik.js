@@ -362,13 +362,15 @@ document.addEventListener('DOMContentLoaded', function () {
           answers[key] = value;
         });
 
-        // TODO: Send to backend / webhook
+        // Save form data
         console.log('Quiz answers:', answers);
 
-        // Show thank you or redirect
-        alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
-        quiz.classList.remove('active');
-        document.body.style.overflow = '';
+        // Find which step the form is in, go to next step
+        var formStep = quizForm.closest('.ek-quiz__step');
+        var formStepIdx = Array.prototype.indexOf.call(quizSteps, formStep);
+        if (formStepIdx < quizSteps.length - 1) {
+          showStep(formStepIdx + 1);
+        }
       });
     }
 
