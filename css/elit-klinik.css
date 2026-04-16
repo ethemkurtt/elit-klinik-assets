@@ -3218,31 +3218,33 @@ html.ek-quiz-open {
   .ek-hero-stats-mobile {
     display: flex !important;
     flex-direction: column;
-    gap: 12px;
-    padding: 24px 20px 32px;
+    gap: 8px;
+    padding: 24px 16px 32px;
     background: #FFFFFF;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .ek-hero-stats-mobile .ek-hsm__card {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px 20px;
-    height: auto;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 12px 16px;
+    gap: 20px;
     background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    box-shadow: 0px 2px 4px 2px rgba(10, 13, 18, 0.1);
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-    gap: 14px;
+    box-sizing: border-box;
   }
 
   .ek-hero-stats-mobile .ek-hsm__icon {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    background: #EBF5FF;
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    background: #F1F8FE;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3250,17 +3252,18 @@ html.ek-quiz-open {
   }
 
   .ek-hero-stats-mobile .ek-hsm__icon svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   .ek-hero-stats-mobile .ek-hsm__text {
     font-family: 'Sofia Pro', sans-serif;
     font-weight: 400;
     font-size: 14px;
-    line-height: 20px;
-    color: #1a1a1a;
-    text-align: left;
+    line-height: 24px;
+    color: #2E3033;
+    text-align: center;
+    flex: 1;
   }
 
   .ek-hero-stats-mobile .ek-hsm__text strong {
@@ -3270,12 +3273,21 @@ html.ek-quiz-open {
   .ek-hero-stats-mobile .ek-hsm__google {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding: 14px 20px;
+    padding: 12px 16px;
+    gap: 12px;
     background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    box-shadow: 0px 2px 4px 2px rgba(10, 13, 18, 0.1);
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-    gap: 16px;
+    box-sizing: border-box;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-logo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
   }
 
   .ek-hero-stats-mobile .ek-hsm__google-left {
@@ -3283,6 +3295,7 @@ html.ek-quiz-open {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
+    flex: 1;
   }
 
   .ek-hero-stats-mobile .ek-hsm__google-top {
@@ -3291,41 +3304,39 @@ html.ek-quiz-open {
     gap: 8px;
   }
 
-  .ek-hero-stats-mobile .ek-hsm__google-logo {
-    width: 28px;
-    height: 28px;
-  }
-
   .ek-hero-stats-mobile .ek-hsm__google-score {
     font-family: 'Sofia Pro', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: #F98755;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FEA500;
   }
 
   .ek-hero-stats-mobile .ek-hsm__google-stars {
     display: flex;
-    gap: 2px;
+    gap: 0;
   }
 
   .ek-hero-stats-mobile .ek-hsm__google-stars svg {
-    width: 16px;
-    height: 16px;
+    width: 12.5px;
+    height: 12.5px;
   }
 
   .ek-hero-stats-mobile .ek-hsm__google-link {
     font-family: 'Sofia Pro', sans-serif;
-    font-size: 11px;
-    color: #0071E3;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    color: #2E3033;
     text-decoration: underline;
   }
 
   .ek-hero-stats-mobile .ek-hsm__google-count {
     font-family: 'Sofia Pro', sans-serif;
     font-weight: 700;
-    font-size: 18px;
-    color: #1a1a1a;
-    margin-left: auto;
+    font-size: 14px;
+    line-height: 32px;
+    color: #6E6E6E;
     white-space: nowrap;
   }
 
