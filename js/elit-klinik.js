@@ -195,15 +195,34 @@ document.addEventListener('DOMContentLoaded', function () {
   if (videoCards.length) {
     videoCards.forEach(function (card) {
       card.addEventListener('click', function () {
-        var video = this.querySelector('video');
-        if (!video) return;
 
-        if (this.classList.contains('playing')) {
-          video.pause();
-          this.classList.remove('playing');
-        } else {
+        // Native <video> element
+        var video = this.querySelector('video');
+        if (video) {
+          if (this.classList.contains('playing')) {
+            video.pause();
+            this.classList.remove('playing');
+          } else {
+            this.classList.add('playing');
+            video.play();
+          }
+          return;
+        }
+
+        // YouTube <iframe> embed
+        var iframe = this.querySelector('iframe');
+        if (iframe) {
+          if (this.classList.contains('playing')) return;
+          var src = iframe.getAttribute('data-src') || iframe.getAttribute('src');
+          if (src) {
+            // Autoplay when clicked
+            if (src.indexOf('autoplay=1') === -1) {
+              src += (src.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
+            }
+            iframe.src = src;
+            iframe.style.display = 'block';
+          }
           this.classList.add('playing');
-          video.play();
         }
       });
     });
