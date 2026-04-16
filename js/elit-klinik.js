@@ -117,9 +117,14 @@ document.addEventListener('DOMContentLoaded', function () {
     var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
     var timeoutId = controller ? setTimeout(function () { controller.abort(); }, 12000) : null;
 
+    // no-cors mode: avoids CORS preflight issues with Zapier hooks.
+    // Browser downgrades Content-Type to text/plain, but Zapier still parses
+    // JSON-looking bodies correctly. Response is opaque (cannot be read) —
+    // that's fine for fire-and-forget form submissions.
     var fetchOpts = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify(payload)
     };
     if (controller) fetchOpts.signal = controller.signal;
