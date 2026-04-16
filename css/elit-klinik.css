@@ -3398,6 +3398,52 @@ html.ek-quiz-open {
   background: #002244;
 }
 
+/* ---- Toast Notification ---- */
+.ek-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-120%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: #FEFEFE;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  z-index: 999999;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  max-width: calc(100vw - 32px);
+}
+
+.ek-toast.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.ek-toast__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.ek-toast__text {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #2E3033;
+}
+
+.ek-toast--success {
+  border-left: 4px solid #34A853;
+}
+
+.ek-toast--error {
+  border-left: 4px solid #E53935;
+}
+
 /* Mobile upload */
 @media (max-width: 768px) {
   .ek-quiz__upload {

@@ -13,6 +13,36 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* =============================================================
+     TOAST NOTIFICATION
+     ============================================================= */
+  function showToast(message, type) {
+    type = type || 'success';
+    var existing = document.querySelector('.ek-toast');
+    if (existing) existing.remove();
+
+    var toast = document.createElement('div');
+    toast.className = 'ek-toast ek-toast--' + type;
+
+    var icon = type === 'success'
+      ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#34A853" stroke-width="2"/><path d="M7 12.5l3 3 7-7" stroke="#34A853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" stroke="#E53935" stroke-width="2"/><path d="M12 7v6M12 16v1" stroke="#E53935" stroke-width="2" stroke-linecap="round"/></svg>';
+
+    toast.innerHTML = '<div class="ek-toast__icon">' + icon + '</div><span class="ek-toast__text">' + message + '</span>';
+    document.body.appendChild(toast);
+
+    // Trigger animation
+    requestAnimationFrame(function () {
+      toast.classList.add('active');
+    });
+
+    // Auto dismiss
+    setTimeout(function () {
+      toast.classList.remove('active');
+      setTimeout(function () { toast.remove(); }, 400);
+    }, 4000);
+  }
+
+  /* =============================================================
      1. MOBILE HAMBURGER MENU
      ============================================================= */
 
@@ -349,6 +379,11 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.classList.add('ek-quiz-open');
         showStep(quizSteps.length - 1);
 
+        // Trigger form ready check after filling (delay so DOM is ready)
+        setTimeout(function () {
+          checkFormReady();
+        }, 200);
+
         // Clean URL without reload
         var cleanUrl = window.location.origin + window.location.pathname;
         window.history.replaceState({}, document.title, cleanUrl);
@@ -435,22 +470,23 @@ document.addEventListener('DOMContentLoaded', function () {
     var quizForm = quiz.querySelector('.ek-quiz__form');
     var quizSubmitBtn = quizForm ? quizForm.querySelector('.ek-quiz__submit') : null;
 
-    if (quizForm) {
-      // Check if all required fields are filled
-      function checkFormReady() {
-        var allFilled = true;
-        quizForm.querySelectorAll('input[required]').forEach(function (input) {
-          if (input.type === 'checkbox') {
-            if (!input.checked) allFilled = false;
-          } else {
-            if (!input.value.trim()) allFilled = false;
-          }
-        });
-        if (quizSubmitBtn) {
-          quizSubmitBtn.classList.toggle('ready', allFilled);
+    // Check if all required fields are filled (quiz-scope function)
+    function checkFormReady() {
+      if (!quizForm) return;
+      var allFilled = true;
+      quizForm.querySelectorAll('input[required]').forEach(function (input) {
+        if (input.type === 'checkbox') {
+          if (!input.checked) allFilled = false;
+        } else {
+          if (!input.value.trim()) allFilled = false;
         }
+      });
+      if (quizSubmitBtn) {
+        quizSubmitBtn.classList.toggle('ready', allFilled);
       }
+    }
 
+    if (quizForm) {
       // Listen to all inputs
       quizForm.querySelectorAll('input').forEach(function (input) {
         input.addEventListener('input', checkFormReady);
@@ -482,6 +518,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var angleCards = quiz.querySelectorAll('.ek-quiz__upload-angle');
     var uploadSubmit = quiz.querySelector('.ek-quiz__upload-submit');
     var activeAngleCard = null;
+
+    // Mobile: remove any capture attr so OS shows camera + gallery picker
+    if (uploadInput) {
+      uploadInput.removeAttribute('capture');
+    }
 
     function checkUploadReady() {
       var allUploaded = true;
@@ -565,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!this.classList.contains('ready')) return;
         console.log('Final quiz answers:', answers);
         // TODO: Send to backend / webhook
-        alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
+        showToast('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.', 'success');
         closeQuiz();
       });
     }
@@ -728,7 +769,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var selectedRadio = form.querySelector('.ek-contact__radio.selected .ek-contact__radio-label');
         if (selectedRadio) data.cinsiyet = selectedRadio.textContent.trim();
         console.log('Contact form:', data);
-        alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
+        showToast('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.', 'success');
         closeContact();
       });
     });
