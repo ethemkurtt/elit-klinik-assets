@@ -193,6 +193,32 @@ document.addEventListener('DOMContentLoaded', function () {
   var videoCards = document.querySelectorAll('.ek-videos__card');
 
   if (videoCards.length) {
+
+    // Convert <video> with YouTube URLs to <iframe> on page load
+    videoCards.forEach(function (card) {
+      var video = card.querySelector('video');
+      if (video) {
+        var src = video.getAttribute('src') || '';
+        if (src.indexOf('youtube.com') !== -1 || src.indexOf('youtu.be') !== -1) {
+          // Convert youtu.be/ID to youtube.com/embed/ID
+          var embedUrl = src;
+          if (src.indexOf('youtu.be/') !== -1) {
+            var vid = src.split('youtu.be/')[1].split('?')[0];
+            embedUrl = 'https://www.youtube.com/embed/' + vid;
+          } else if (src.indexOf('/watch?v=') !== -1) {
+            var vid = src.split('v=')[1].split('&')[0];
+            embedUrl = 'https://www.youtube.com/embed/' + vid;
+          }
+          var iframe = document.createElement('iframe');
+          iframe.setAttribute('data-src', embedUrl);
+          iframe.setAttribute('allow', 'autoplay; encrypted-media');
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.style.display = 'none';
+          video.parentNode.replaceChild(iframe, video);
+        }
+      }
+    });
+
     videoCards.forEach(function (card) {
       card.addEventListener('click', function () {
 
@@ -215,7 +241,6 @@ document.addEventListener('DOMContentLoaded', function () {
           if (this.classList.contains('playing')) return;
           var src = iframe.getAttribute('data-src') || iframe.getAttribute('src');
           if (src) {
-            // Autoplay when clicked
             if (src.indexOf('autoplay=1') === -1) {
               src += (src.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
             }
