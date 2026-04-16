@@ -3020,6 +3020,259 @@ html.ek-quiz-open {
   background: rgba(0, 51, 102, 0.1);
 }
 
+/* ---- Quiz Upload Step (Photo) ---- */
+.ek-quiz__upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 853px;
+}
+
+.ek-quiz__upload-subtitle {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+/* QR Section */
+.ek-quiz__upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.ek-quiz__upload-section-title {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #FEFEFE;
+}
+
+.ek-quiz__upload-qr-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  gap: 20px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ek-quiz__upload-qr-text {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: #F1F8FE;
+}
+
+.ek-quiz__upload-qr-img {
+  width: 156px;
+  height: 156px;
+  border-radius: 8px;
+}
+
+/* File Upload Area */
+.ek-quiz__upload-drop {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 12px;
+  width: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ek-quiz__upload-drop:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ek-quiz__upload-drop-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(245, 245, 245, 0.1);
+  border: 6px solid rgba(250, 250, 250, 0.06);
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ek-quiz__upload-drop-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ek-quiz__upload-drop-text {
+  text-align: center;
+}
+
+.ek-quiz__upload-drop-text .ek-upload-link {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #F98755;
+  cursor: pointer;
+}
+
+.ek-quiz__upload-drop-text span {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #FEFEFE;
+}
+
+.ek-quiz__upload-drop-hint {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #F1F8FE;
+}
+
+/* Photo Angle Cards */
+.ek-quiz__upload-angles {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+}
+
+.ek-quiz__upload-angle {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px;
+  gap: 8px;
+  flex: 1;
+  border: 1px solid #657E96;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.ek-quiz__upload-angle:hover {
+  border-color: #F98755;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ek-quiz__upload-angle.uploaded {
+  border-color: #34A853;
+  background: rgba(52, 168, 83, 0.08);
+}
+
+.ek-quiz__upload-angle-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.ek-quiz__upload-angle-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ek-quiz__upload-angle-label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #FBFBFB;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Checkboxes */
+.ek-quiz__upload-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.ek-quiz__upload-check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.ek-quiz__upload-check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #EFF3F8;
+  border-radius: 6px;
+  background: #FEFEFE;
+  accent-color: #003366;
+  flex-shrink: 0;
+}
+
+.ek-quiz__upload-check span {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FEFEFE;
+}
+
+/* Mobile upload */
+@media (max-width: 768px) {
+  .ek-quiz__upload-subtitle {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .ek-quiz__upload-angles {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ek-quiz__upload-angle {
+    width: calc(33.33% - 6px);
+    flex: none;
+    padding: 12px 8px;
+  }
+
+  .ek-quiz__upload-angle-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ek-quiz__upload-angle-label {
+    font-size: 11px;
+  }
+
+  .ek-quiz__upload-qr-box {
+    padding: 24px 16px;
+  }
+
+  .ek-quiz__upload-qr-img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
 /* Contact Panel Responsive */
 @media (max-width: 768px) {
   .ek-contact {

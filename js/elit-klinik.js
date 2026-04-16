@@ -343,6 +343,86 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = '';
       });
     }
+
+    /* ---- Photo Upload Step ---- */
+    var uploadDrop = quiz.querySelector('.ek-quiz__upload-drop');
+    var uploadInput = quiz.querySelector('.ek-quiz__upload-input');
+    var angleCards = quiz.querySelectorAll('.ek-quiz__upload-angle');
+    var activeAngle = null;
+
+    if (uploadDrop && uploadInput) {
+      // Click to open file picker
+      uploadDrop.addEventListener('click', function () {
+        uploadInput.click();
+      });
+
+      // Drag & drop
+      uploadDrop.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        this.style.background = 'rgba(255,255,255,0.1)';
+      });
+
+      uploadDrop.addEventListener('dragleave', function () {
+        this.style.background = '';
+      });
+
+      uploadDrop.addEventListener('drop', function (e) {
+        e.preventDefault();
+        this.style.background = '';
+        var files = e.dataTransfer.files;
+        if (files.length) handleUploadedFile(files[0]);
+      });
+
+      // File input change
+      uploadInput.addEventListener('change', function () {
+        if (this.files.length) handleUploadedFile(this.files[0]);
+      });
+    }
+
+    // Click angle card → set active angle, open file picker
+    angleCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        activeAngle = this.getAttribute('data-angle');
+        if (uploadInput) uploadInput.click();
+      });
+    });
+
+    function handleUploadedFile(file) {
+      if (!file.type.startsWith('image/')) return;
+
+      // Save to answers
+      var angleName = activeAngle || 'photo';
+      answers[angleName] = file;
+
+      // Mark angle card as uploaded
+      if (activeAngle) {
+        angleCards.forEach(function (card) {
+          if (card.getAttribute('data-angle') === activeAngle) {
+            card.classList.add('uploaded');
+            var label = card.querySelector('.ek-quiz__upload-angle-label');
+            if (label) label.textContent = '✓ Yüklendi';
+          }
+        });
+        activeAngle = null;
+      }
+
+      // Show preview in drop area
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var preview = uploadDrop.querySelector('.ek-quiz__upload-preview');
+        if (!preview) {
+          preview = document.createElement('img');
+          preview.className = 'ek-quiz__upload-preview';
+          preview.style.cssText = 'max-width:120px;max-height:80px;border-radius:8px;margin-top:8px;';
+          uploadDrop.appendChild(preview);
+        }
+        preview.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+
+      // Reset file input for re-use
+      if (uploadInput) uploadInput.value = '';
+    }
   }
 
 
