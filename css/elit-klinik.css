@@ -3103,30 +3103,13 @@ html.ek-quiz-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
   width: 100%;
-  max-width: 853px;
+  max-width: 985px;
 }
 
-.ek-quiz__upload-subtitle {
-  font-family: 'Sofia Pro', sans-serif;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-  color: #FEFEFE;
-}
-
-/* QR Section */
-.ek-quiz__upload-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-}
-
-.ek-quiz__upload-section-title {
+/* Section label above box */
+.ek-quiz__upload-section-label {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -3135,49 +3118,36 @@ html.ek-quiz-open {
   color: #FEFEFE;
 }
 
-.ek-quiz__upload-qr-box {
+/* Top info box */
+.ek-quiz__upload-header {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 32px 24px;
-  gap: 20px;
+  gap: 8px;
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 32px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.04);
 }
 
-.ek-quiz__upload-qr-text {
+.ek-quiz__upload-title {
   font-family: 'Sofia Pro', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
   text-align: center;
-  color: #F1F8FE;
+  color: #FEFEFE;
 }
 
-.ek-quiz__upload-qr-img {
-  width: 156px;
-  height: 156px;
-  border-radius: 8px;
-}
-
-/* Upload Info/Warning Text */
-.ek-quiz__upload-info {
+.ek-quiz__upload-format {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   text-align: center;
-  color: rgba(254, 254, 254, 0.7);
-  max-width: 600px;
-}
-
-.ek-quiz__upload-info strong {
-  color: #FEFEFE;
-  font-weight: 600;
+  color: rgba(254, 254, 254, 0.6);
 }
 
 /* Photo Angle Cards */
@@ -3193,13 +3163,15 @@ html.ek-quiz-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 16px;
+  justify-content: center;
+  padding: 20px 12px;
   gap: 8px;
   flex: 1;
   border: 1px solid #657E96;
   border-radius: 12px;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
+  position: relative;
 }
 
 .ek-quiz__upload-angle:hover {
@@ -3212,7 +3184,54 @@ html.ek-quiz-open {
   background: rgba(52, 168, 83, 0.08);
   padding: 0;
   overflow: hidden;
-  position: relative;
+}
+
+.ek-quiz__upload-angle-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.ek-quiz__upload-angle-icon svg,
+.ek-quiz__upload-angle-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ek-quiz__upload-angle-label {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #FBFBFB;
+  text-align: center;
+}
+
+/* Upload button inside angle card */
+.ek-quiz__upload-angle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  background: #003366;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #FEFEFE;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.ek-quiz__upload-angle-btn:hover {
+  background: #002244;
+}
+
+.ek-quiz__upload-angle.uploaded .ek-quiz__upload-angle-btn {
+  display: none !important;
 }
 
 /* Angle card preview */
@@ -3257,54 +3276,6 @@ html.ek-quiz-open {
   height: 12px;
 }
 
-.ek-quiz__upload-angle-icon {
-  width: 48px;
-  height: 48px;
-}
-
-.ek-quiz__upload-angle-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.ek-quiz__upload-angle-label {
-  font-family: 'Sofia Pro', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 14px;
-  color: #FBFBFB;
-  text-align: center;
-  white-space: nowrap;
-}
-
-/* Upload button inside angle card */
-.ek-quiz__upload-angle-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 14px;
-  background: #003366;
-  border: none;
-  border-radius: 8px;
-  font-family: 'Sofia Pro', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  color: #FEFEFE;
-  cursor: pointer;
-  margin-top: 4px;
-  transition: background 0.2s;
-  white-space: nowrap;
-}
-
-.ek-quiz__upload-angle-btn:hover {
-  background: #002244;
-}
-
-.ek-quiz__upload-angle.uploaded .ek-quiz__upload-angle-btn {
-  display: none !important;
-}
-
 /* Checkboxes */
 .ek-quiz__upload-checks {
   display: flex;
@@ -3333,8 +3304,8 @@ html.ek-quiz-open {
 .ek-quiz__upload-check span {
   font-family: 'Sofia Pro', sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   color: #FEFEFE;
 }
 
@@ -3359,7 +3330,6 @@ html.ek-quiz-open {
   margin-top: 8px;
 }
 
-/* Upload Submit - active (all 5 photos uploaded) */
 .ek-quiz__upload-submit.ready {
   background: #003366;
   border: 1px solid #003366;
@@ -3384,28 +3354,31 @@ html.ek-quiz-open {
     line-height: 20px;
   }
 
-  /* Hide QR section on mobile */
-  .ek-quiz__upload-section--qr {
-    display: none !important;
-  }
-
-  .ek-quiz__upload-section--pc .ek-quiz__upload-section-title {
-    font-size: 14px;
-    line-height: 20px;
-  }
-
+  /* Upload step mobile */
   .ek-quiz__upload {
     gap: 16px;
   }
 
-  .ek-quiz__upload-subtitle {
-    font-size: 14px !important;
-    line-height: 20px !important;
+  .ek-quiz__upload-section-label {
+    font-size: 14px;
+    line-height: 20px;
   }
 
-  .ek-quiz__upload-info {
+  .ek-quiz__upload-header {
+    padding: 0;
+    border: none;
+    background: none;
+    gap: 4px;
+  }
+
+  .ek-quiz__upload-title {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  .ek-quiz__upload-format {
     font-size: 11px;
-    line-height: 16px;
   }
 
   .ek-quiz__upload-angles {
@@ -3417,7 +3390,7 @@ html.ek-quiz-open {
   .ek-quiz__upload-angle {
     flex: none;
     width: auto;
-    padding: 16px 12px;
+    padding: 14px 10px;
     gap: 6px;
   }
 
@@ -3438,7 +3411,7 @@ html.ek-quiz-open {
   }
 
   .ek-quiz__upload-angle-btn {
-    font-size: 11px;
+    font-size: 10px;
     padding: 5px 10px;
   }
 
