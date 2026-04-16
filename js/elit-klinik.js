@@ -902,6 +902,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    // Mark district input as required (common required field)
+    contactPanel.querySelectorAll('.ek-contact__form input[name="ilce"]').forEach(function (input) {
+      input.setAttribute('required', 'required');
+    });
+
     // Form validation + submit
     contactPanel.querySelectorAll('.ek-contact__form').forEach(function (form) {
       form.addEventListener('submit', function (e) {
