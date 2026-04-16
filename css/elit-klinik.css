@@ -2078,23 +2078,24 @@ img {
 .ek-contact {
   display: none;
   position: fixed;
-  top: 50%;
+  bottom: 0;
   right: 0;
-  transform: translate(100%, -50%);
+  top: auto;
   width: 591px;
-  max-height: 90vh;
+  max-height: 95vh;
   background: #FEFEFE;
   box-shadow: -2px 0px 2px rgba(10, 13, 18, 0.2);
   z-index: 999998;
   flex-direction: column;
   overflow-y: auto;
   transition: transform 0.35s ease;
-  border-radius: 12px 0 0 12px;
+  border-radius: 12px 0 0 0;
+  transform: translateX(100%);
 }
 
 .ek-contact.active {
   display: flex;
-  transform: translate(0, -50%);
+  transform: translateX(0);
 }
 
 .ek-contact__overlay {
@@ -2468,6 +2469,152 @@ img {
 
 .ek-contact__submit--filled:hover {
   background: #00264d;
+}
+
+/* Validation error state */
+.ek-contact__input.error,
+.ek-contact__phone.error {
+  border-color: #E53935;
+}
+
+.ek-contact__input.error ~ .ek-contact__error,
+.ek-contact__phone.error ~ .ek-contact__error,
+.ek-contact__error {
+  display: none;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: #E53935;
+  margin-top: 4px;
+}
+
+.ek-contact__field.has-error .ek-contact__input,
+.ek-contact__field.has-error .ek-contact__phone {
+  border-color: #E53935;
+}
+
+.ek-contact__field.has-error .ek-contact__error {
+  display: block;
+}
+
+.ek-contact__input.error + .ek-contact__input-icon-right {
+  color: #E53935;
+}
+
+/* Error icon inside input */
+.ek-contact__field.has-error .ek-contact__input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Ccircle cx='10' cy='10' r='9' stroke='%23E53935' stroke-width='1.5'/%3E%3Cpath d='M10 6v5M10 13.5v.5' stroke='%23E53935' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px 20px;
+  padding-right: 40px;
+}
+
+/* Country code dropdown */
+.ek-contact__phone-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ek-contact__country-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: -16px;
+  width: 280px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: #FEFEFE;
+  border: 1px solid #EFF3F8;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+  padding: 8px 0;
+}
+
+.ek-contact__country-dropdown.open {
+  display: block;
+}
+
+.ek-contact__country-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 14px;
+  color: #2E3033;
+}
+
+.ek-contact__country-option:hover {
+  background: #F1F8FE;
+}
+
+.ek-contact__country-option img {
+  width: 28px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+/* Time slot picker */
+.ek-contact__time-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  background: #FEFEFE;
+  border: 1px solid #EFF3F8;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ek-contact__time-dropdown.open {
+  display: flex;
+}
+
+.ek-contact__time-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #EFF3F8;
+  background: #FEFEFE;
+  cursor: pointer;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 14px;
+  color: #2E3033;
+  transition: all 0.15s;
+}
+
+.ek-contact__time-slot:hover {
+  background: #F1F8FE;
+  border-color: #003366;
+}
+
+.ek-contact__time-slot.selected {
+  background: #003366;
+  border-color: #003366;
+  color: #FEFEFE;
+}
+
+/* Time field wrapper */
+.ek-contact__time-wrap {
+  position: relative;
 }
 
 

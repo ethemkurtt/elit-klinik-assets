@@ -430,22 +430,82 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Form submit
-    var contactForm = contactPanel.querySelector('.ek-contact__form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function (e) {
+    // Country dropdown
+    contactPanel.querySelectorAll('.ek-contact__phone-select').forEach(function (sel) {
+      sel.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var dd = this.querySelector('.ek-contact__country-dropdown');
+        if (dd) dd.classList.toggle('open');
+      });
+    });
+
+    contactPanel.querySelectorAll('.ek-contact__country-option').forEach(function (opt) {
+      opt.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wrap = this.closest('.ek-contact__phone');
+        var flag = wrap.querySelector('.ek-contact__phone-flag');
+        var code = wrap.querySelector('.ek-contact__phone-code');
+        flag.src = this.querySelector('img').src;
+        code.textContent = this.getAttribute('data-code');
+        this.closest('.ek-contact__country-dropdown').classList.remove('open');
+      });
+    });
+
+    // Time slot picker
+    contactPanel.querySelectorAll('.ek-contact__time-trigger').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var dd = this.closest('.ek-contact__time-wrap').querySelector('.ek-contact__time-dropdown');
+        if (dd) dd.classList.toggle('open');
+      });
+    });
+
+    contactPanel.querySelectorAll('.ek-contact__time-slot').forEach(function (slot) {
+      slot.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wrap = this.closest('.ek-contact__time-wrap');
+        wrap.querySelectorAll('.ek-contact__time-slot').forEach(function (s) { s.classList.remove('selected'); });
+        this.classList.add('selected');
+        var input = wrap.querySelector('.ek-contact__time-hidden');
+        if (input) input.value = this.textContent.trim();
+        var label = wrap.querySelector('.ek-contact__time-label');
+        if (label) label.textContent = this.textContent.trim();
+        this.closest('.ek-contact__time-dropdown').classList.remove('open');
+      });
+    });
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', function () {
+      contactPanel.querySelectorAll('.ek-contact__country-dropdown.open, .ek-contact__time-dropdown.open').forEach(function (dd) {
+        dd.classList.remove('open');
+      });
+    });
+
+    // Form validation + submit
+    contactPanel.querySelectorAll('.ek-contact__form').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var formData = new FormData(contactForm);
+        var valid = true;
+        form.querySelectorAll('.ek-contact__field').forEach(function (field) {
+          field.classList.remove('has-error');
+          var input = field.querySelector('input[required]');
+          if (input && !input.value.trim()) {
+            field.classList.add('has-error');
+            valid = false;
+          }
+        });
+        if (!valid) return;
+
+        var formData = new FormData(form);
         var data = {};
         formData.forEach(function (val, key) { data[key] = val; });
-        // Selected gender
-        var selectedRadio = contactPanel.querySelector('.ek-contact__radio.selected .ek-contact__radio-label');
+        var selectedRadio = form.querySelector('.ek-contact__radio.selected .ek-contact__radio-label');
         if (selectedRadio) data.cinsiyet = selectedRadio.textContent.trim();
         console.log('Contact form:', data);
         alert('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.');
         closeContact();
       });
-    }
+    });
   }
 
 
