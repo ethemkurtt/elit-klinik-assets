@@ -3109,27 +3109,25 @@ html.ek-quiz-open {
 .ek-hero .ek-hero__logos { display: none !important; }
 .ek-results__cta--mobile { display: none !important; }
 .ek-hero__cta--mobile { display: none !important; }
+.ek-hero-stats-mobile { display: none !important; }
 
 @media (max-width: 768px) {
 
   /* ---------- HERO ---------- */
   .ek-hero {
     padding: 120px 24px 0 24px;
-    min-height: auto !important;
-    height: auto !important;
+    min-height: 650px !important;
+    height: 650px;
     text-align: center;
     position: relative;
-    overflow: visible !important;
+    overflow: hidden;
   }
 
   /* Mobile-only background overlay (desktop inline bg stays intact) */
   .ek-hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 650px;
+    inset: 0;
     background: #0a2a52 url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/kapak-1.webp') no-repeat center center / cover;
     z-index: 0;
     pointer-events: none;
@@ -3146,97 +3144,10 @@ html.ek-quiz-open {
     max-width: 100%;
   }
 
-  .ek-hero__badge-bar {
-    display: none !important;
-  }
-
-  .ek-hero__cards {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    width: 100% !important;
-    order: 10;
-    padding: 24px 0 32px;
-  }
-
-  .ek-hero__card {
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    padding: 16px 20px !important;
-    height: auto !important;
-    background: #FFFFFF !important;
-    border-radius: 12px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    gap: 14px !important;
-  }
-
-  .ek-hero__card-icon {
-    background: #EBF5FF !important;
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 32px;
-    border-radius: 50% !important;
-  }
-
-  .ek-hero__card-icon svg {
-    width: 14px !important;
-    height: 14px !important;
-    color: #0071E3;
-  }
-
-  .ek-hero__card-text {
-    font-size: 14px !important;
-    line-height: 20px !important;
-    color: #1a1a1a !important;
-    text-align: left !important;
-  }
-
+  .ek-hero__badge-bar,
+  .ek-hero__cards,
   .ek-hero__google-card {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    height: auto !important;
-    background: #FFFFFF !important;
-    border-radius: 12px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    padding: 14px 20px !important;
-    gap: 16px !important;
-    order: 11;
-  }
-
-  .ek-hero__google-bar {
     display: none !important;
-  }
-
-  .ek-hero__google-content {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 16px !important;
-    padding: 0 !important;
-    width: 100%;
-  }
-
-  .ek-hero__google-top {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-
-  .ek-hero__google-score {
-    color: #F98755 !important;
-    font-size: 16px !important;
-  }
-
-  .ek-hero__google-link {
-    font-size: 11px !important;
-    color: #0071E3 !important;
-  }
-
-  .ek-hero__google-count {
-    font-size: 16px !important;
-    color: #1a1a1a !important;
-    margin-left: auto;
   }
 
   .ek-hero__heading {
@@ -3302,6 +3213,121 @@ html.ek-quiz-open {
     display: block;
   }
 
+
+  /* ---------- HERO STATS (mobile-only section) ---------- */
+  .ek-hero-stats-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 20px 32px;
+    background: #FFFFFF;
+    width: 100%;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 20px;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    gap: 14px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: #EBF5FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__text {
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1a1a1a;
+    text-align: left;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__text strong {
+    font-weight: 700;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 20px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    gap: 16px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-score {
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #F98755;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-stars svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-link {
+    font-family: 'Sofia Pro', sans-serif;
+    font-size: 11px;
+    color: #0071E3;
+    text-decoration: underline;
+  }
+
+  .ek-hero-stats-mobile .ek-hsm__google-count {
+    font-family: 'Sofia Pro', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #1a1a1a;
+    margin-left: auto;
+    white-space: nowrap;
+  }
 
   /* ---------- RESULTS ---------- */
   .ek-results {
