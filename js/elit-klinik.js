@@ -43,6 +43,111 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* =============================================================
+     WEBHOOK: Secure form submission to Zapier
+     - Sanitizes all input (strips HTML, control chars, length-limits)
+     - Rate-limits to prevent spam/abuse (5s cooldown per session)
+     - Disables submit button during request (no double-submit)
+     - Adds timeout (12s) with AbortController
+     - No sensitive data logged; no inline HTML from user input
+     ============================================================= */
+
+  var EK_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/19412362/uj6gtcl/';
+  var EK_LAST_SUBMIT = 0;
+  var EK_COOLDOWN_MS = 5000;
+
+  function ekSanitizeStr(value, maxLen) {
+    if (value === null || value === undefined) return '';
+    maxLen = maxLen || 500;
+    var str = String(value);
+    // Strip HTML tags
+    str = str.replace(/<[^>]*>/g, '');
+    // Remove control characters except standard whitespace
+    str = str.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
+    str = str.trim();
+    if (str.length > maxLen) str = str.substring(0, maxLen);
+    return str;
+  }
+
+  function ekSanitizePayload(obj) {
+    var out = {};
+    if (!obj || typeof obj !== 'object') return out;
+    var keys = Object.keys(obj).slice(0, 50); // cap key count
+    keys.forEach(function (key) {
+      var safeKey = ekSanitizeStr(key, 80);
+      if (!safeKey) return;
+      var val = obj[key];
+      if (val === null || val === undefined) {
+        out[safeKey] = '';
+      } else if (typeof val === 'boolean' || typeof val === 'number') {
+        out[safeKey] = val;
+      } else if (Array.isArray(val)) {
+        out[safeKey] = val.slice(0, 30).map(function (v) {
+          return typeof v === 'string' ? ekSanitizeStr(v, 1000)
+               : (v && typeof v === 'object') ? ekSanitizePayload(v)
+               : v;
+        });
+      } else if (typeof val === 'object') {
+        out[safeKey] = ekSanitizePayload(val);
+      } else {
+        out[safeKey] = ekSanitizeStr(val, 2000);
+      }
+    });
+    return out;
+  }
+
+  function ekSubmitWebhook(type, data, button) {
+    var now = Date.now();
+    if (now - EK_LAST_SUBMIT < EK_COOLDOWN_MS) {
+      showToast('Lütfen birkaç saniye bekleyip tekrar deneyin.', 'error');
+      return Promise.reject(new Error('rate_limited'));
+    }
+    EK_LAST_SUBMIT = now;
+
+    var payload = ekSanitizePayload(data || {});
+    payload.type = ekSanitizeStr(type, 64);
+    payload.submitted_at = new Date().toISOString();
+    payload.page_url = (location.origin + location.pathname);
+    payload.source = 'elit-klinik-website';
+
+    if (button) {
+      button.setAttribute('disabled', 'disabled');
+      button.setAttribute('data-loading', '1');
+    }
+
+    var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timeoutId = controller ? setTimeout(function () { controller.abort(); }, 12000) : null;
+
+    var fetchOpts = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    };
+    if (controller) fetchOpts.signal = controller.signal;
+
+    return fetch(EK_WEBHOOK_URL, fetchOpts).then(function (res) {
+      if (timeoutId) clearTimeout(timeoutId);
+      return res;
+    }).catch(function (err) {
+      if (timeoutId) clearTimeout(timeoutId);
+      // Reset rate limit on failure so user can retry
+      EK_LAST_SUBMIT = 0;
+      throw err;
+    }).then(function (r) {
+      if (button) {
+        button.removeAttribute('disabled');
+        button.removeAttribute('data-loading');
+      }
+      return r;
+    }, function (e) {
+      if (button) {
+        button.removeAttribute('disabled');
+        button.removeAttribute('data-loading');
+      }
+      throw e;
+    });
+  }
+
+  /* =============================================================
      1. MOBILE HAMBURGER MENU
      ============================================================= */
 
@@ -810,11 +915,47 @@ document.addEventListener('DOMContentLoaded', function () {
         var formData = new FormData(form);
         var data = {};
         formData.forEach(function (val, key) { data[key] = val; });
+
         var selectedRadio = form.querySelector('.ek-contact__radio.selected .ek-contact__radio-label');
-        if (selectedRadio) data.cinsiyet = selectedRadio.textContent.trim();
-        console.log('Contact form:', data);
-        showToast('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.', 'success');
-        closeContact();
+        if (selectedRadio) data.gender = selectedRadio.textContent.trim();
+
+        var phoneCodeEl = form.querySelector('.ek-contact__phone-code');
+        if (phoneCodeEl) data.phone_country_code = phoneCodeEl.textContent.trim();
+
+        // Detect form type from parent tab-content
+        var tabContent = form.closest('.ek-contact__tab-content');
+        var tabName = tabContent ? tabContent.getAttribute('data-tab') : '';
+        var webhookType = (tabName === 'appointment') ? 'appointment_request' : 'callback_request';
+
+        // Map Turkish field names to English keys
+        var mapped = {
+          first_name: data.ad || '',
+          last_name: data.soyad || '',
+          phone: data.telefon || '',
+          phone_country_code: data.phone_country_code || '',
+          district: data.ilce || '',
+          gender: data.gender || ''
+        };
+        if (data.gun) mapped.appointment_date = data.gun;
+        if (data.saat) mapped.appointment_time = data.saat;
+
+        var submitBtn = form.querySelector('.ek-contact__submit');
+
+        ekSubmitWebhook(webhookType, mapped, submitBtn).then(function () {
+          showToast('Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.', 'success');
+          form.reset();
+          // Reset radio visual state
+          form.querySelectorAll('.ek-contact__radio').forEach(function (r, i) {
+            r.classList.toggle('selected', i === 1);
+          });
+          // Reset time label if present
+          var timeLabel = form.querySelector('.ek-contact__time-label');
+          if (timeLabel) timeLabel.textContent = 'Saat seçiniz.';
+          closeContact();
+        }).catch(function (err) {
+          if (err && err.message === 'rate_limited') return;
+          showToast('Gönderim sırasında bir hata oluştu. Lütfen tekrar deneyin.', 'error');
+        });
       });
     });
   }
