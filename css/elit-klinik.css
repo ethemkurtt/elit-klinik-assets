@@ -1532,7 +1532,10 @@ img {
   background: #000;
 }
 
-.ek-videos__card.playing img,
+.ek-videos__card.playing img {
+  visibility: hidden;
+}
+
 .ek-videos__card.playing .ek-videos__play {
   display: none;
 }
