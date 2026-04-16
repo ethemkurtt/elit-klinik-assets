@@ -407,12 +407,17 @@ document.addEventListener('DOMContentLoaded', function () {
       contactOverlay.addEventListener('click', closeContact);
     }
 
-    // Tab switching
+    // Tab switching with content
     var contactTabs = contactPanel.querySelectorAll('.ek-contact__tab');
+    var contactTabContents = contactPanel.querySelectorAll('.ek-contact__tab-content');
     contactTabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         contactTabs.forEach(function (t) { t.classList.remove('active'); });
         this.classList.add('active');
+        var targetTab = this.getAttribute('data-tab');
+        contactTabContents.forEach(function (tc) {
+          tc.classList.toggle('active', tc.getAttribute('data-tab') === targetTab);
+        });
       });
     });
 

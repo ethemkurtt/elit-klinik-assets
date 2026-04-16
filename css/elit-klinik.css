@@ -2078,22 +2078,23 @@ img {
 .ek-contact {
   display: none;
   position: fixed;
-  top: 0;
+  top: 50%;
   right: 0;
-  bottom: 0;
+  transform: translate(100%, -50%);
   width: 591px;
+  max-height: 90vh;
   background: #FEFEFE;
   box-shadow: -2px 0px 2px rgba(10, 13, 18, 0.2);
   z-index: 999998;
   flex-direction: column;
   overflow-y: auto;
-  transform: translateX(100%);
   transition: transform 0.35s ease;
+  border-radius: 12px 0 0 12px;
 }
 
 .ek-contact.active {
   display: flex;
-  transform: translateX(0);
+  transform: translate(0, -50%);
 }
 
 .ek-contact__overlay {
@@ -2390,6 +2391,83 @@ img {
 
 .ek-contact__submit:hover {
   background: rgba(0, 51, 102, 0.06);
+}
+
+/* Tab content switching */
+.ek-contact__tab-content {
+  display: none;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.ek-contact__tab-content.active {
+  display: flex;
+}
+
+/* Mobile header (hidden on desktop) */
+.ek-contact__header {
+  display: none;
+}
+
+/* Heading for Randevu Al */
+.ek-contact__heading {
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #1a1a1a;
+  text-align: center;
+  display: none;
+}
+
+/* Date/Time input icons */
+.ek-contact__input-icon {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 8px;
+  height: 48px;
+  background: #FEFEFE;
+  border: 1px solid #EFF3F8;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.ek-contact__input-icon svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #6E6E6E;
+}
+
+.ek-contact__input-icon input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2E3033;
+  outline: none;
+}
+
+.ek-contact__input-icon input::placeholder {
+  color: #6E6E6E;
+}
+
+/* Randevu submit - filled style */
+.ek-contact__submit--filled {
+  background: #003366;
+  border-color: #003366;
+  color: #FEFEFE;
+}
+
+.ek-contact__submit--filled:hover {
+  background: #00264d;
 }
 
 
@@ -2793,6 +2871,67 @@ html.ek-quiz-open {
 
 .ek-quiz__submit:hover {
   background: rgba(0, 51, 102, 0.1);
+}
+
+/* Contact Panel Responsive */
+@media (max-width: 768px) {
+  .ek-contact {
+    width: 100% !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    transform: translateX(100%) !important;
+  }
+
+  .ek-contact.active {
+    transform: translateX(0) !important;
+  }
+
+  .ek-contact__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    flex-shrink: 0;
+  }
+
+  .ek-contact__header-logo {
+    height: 36px;
+    width: auto;
+  }
+
+  .ek-contact__heading {
+    display: block;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .ek-contact__close {
+    left: auto;
+    right: 20px;
+    top: 20px;
+  }
+
+  .ek-contact__body {
+    padding: 24px 20px 40px;
+    gap: 32px;
+  }
+
+  .ek-contact__tabs {
+    max-width: 100%;
+  }
+
+  .ek-contact__row {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .ek-contact__submit {
+    max-width: 100%;
+  }
 }
 
 /* Quiz Responsive */
