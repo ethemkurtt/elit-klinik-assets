@@ -3115,18 +3115,21 @@ html.ek-quiz-open {
   /* ---------- HERO ---------- */
   .ek-hero {
     padding: 120px 24px 0 24px;
-    min-height: 650px !important;
-    height: 650px;
+    min-height: auto !important;
+    height: auto !important;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible !important;
   }
 
   /* Mobile-only background overlay (desktop inline bg stays intact) */
   .ek-hero::before {
     content: '';
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 650px;
     background: #0a2a52 url('https://lp.elitklinik.com.tr/wp-content/uploads/2026/04/kapak-1.webp') no-repeat center center / cover;
     z-index: 0;
     pointer-events: none;
@@ -3153,6 +3156,7 @@ html.ek-quiz-open {
     gap: 12px !important;
     width: 100% !important;
     order: 10;
+    padding: 24px 0 32px;
   }
 
   .ek-hero__card {
