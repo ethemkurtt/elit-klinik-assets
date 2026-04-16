@@ -3143,10 +3143,96 @@ html.ek-quiz-open {
     max-width: 100%;
   }
 
-  .ek-hero__badge-bar,
-  .ek-hero__cards,
-  .ek-hero__google-card {
+  .ek-hero__badge-bar {
     display: none !important;
+  }
+
+  .ek-hero__cards {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    order: 10;
+  }
+
+  .ek-hero__card {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 16px 20px !important;
+    height: auto !important;
+    background: #FFFFFF !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    gap: 14px !important;
+  }
+
+  .ek-hero__card-icon {
+    background: #EBF5FF !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    border-radius: 50% !important;
+  }
+
+  .ek-hero__card-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+    color: #0071E3;
+  }
+
+  .ek-hero__card-text {
+    font-size: 14px !important;
+    line-height: 20px !important;
+    color: #1a1a1a !important;
+    text-align: left !important;
+  }
+
+  .ek-hero__google-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    height: auto !important;
+    background: #FFFFFF !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 14px 20px !important;
+    gap: 16px !important;
+    order: 11;
+  }
+
+  .ek-hero__google-bar {
+    display: none !important;
+  }
+
+  .ek-hero__google-content {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  .ek-hero__google-top {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .ek-hero__google-score {
+    color: #F98755 !important;
+    font-size: 16px !important;
+  }
+
+  .ek-hero__google-link {
+    font-size: 11px !important;
+    color: #0071E3 !important;
+  }
+
+  .ek-hero__google-count {
+    font-size: 16px !important;
+    color: #1a1a1a !important;
+    margin-left: auto;
   }
 
   .ek-hero__heading {
