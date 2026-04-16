@@ -1419,6 +1419,7 @@ img {
   font-size: 18px;
   line-height: 24px;
   color: #EFF3F8;
+  max-width: 50%;
 }
 
 .ek-steps__panel-cta {
