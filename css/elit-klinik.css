@@ -3278,6 +3278,33 @@ html.ek-quiz-open {
   white-space: nowrap;
 }
 
+/* Upload button inside angle card */
+.ek-quiz__upload-angle-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  background: #003366;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Sofia Pro', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: #FEFEFE;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.ek-quiz__upload-angle-btn:hover {
+  background: #002244;
+}
+
+.ek-quiz__upload-angle.uploaded .ek-quiz__upload-angle-btn {
+  display: none !important;
+}
+
 /* Checkboxes */
 .ek-quiz__upload-checks {
   display: flex;
@@ -3357,29 +3384,62 @@ html.ek-quiz-open {
     line-height: 20px;
   }
 
-  .ek-quiz__upload-section-title {
-    font-size: 15px;
-    line-height: 22px;
+  /* Hide QR section on mobile */
+  .ek-quiz__upload-section--qr {
+    display: none !important;
   }
 
-  .ek-quiz__upload-qr-box {
-    padding: 20px 16px;
+  /* Hide "Bilgisayardan yüklemek için;" title on mobile */
+  .ek-quiz__upload-section--pc .ek-quiz__upload-section-title {
+    display: none !important;
+  }
+
+  .ek-quiz__upload {
     gap: 16px;
   }
 
-  .ek-quiz__upload-qr-text {
-    font-size: 13px;
-    line-height: 18px;
-  }
-
-  .ek-quiz__upload-qr-img {
-    width: 120px;
-    height: 120px;
+  .ek-quiz__upload-subtitle {
+    font-size: 14px !important;
+    line-height: 20px !important;
   }
 
   .ek-quiz__upload-info {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .ek-quiz__upload-angles {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ek-quiz__upload-angle {
+    flex: none;
+    width: auto;
+    padding: 16px 12px;
+    gap: 6px;
+  }
+
+  .ek-quiz__upload-angle:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 5px);
+    margin: 0 auto;
+  }
+
+  .ek-quiz__upload-angle-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ek-quiz__upload-angle-label {
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  /* Mobile upload button inside card */
+  .ek-quiz__upload-angle-btn {
+    display: flex !important;
   }
 
   .ek-quiz__upload-angle-preview {
@@ -3392,40 +3452,13 @@ html.ek-quiz-open {
     font-size: 16px;
   }
 
-  .ek-quiz__upload-angles {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .ek-quiz__upload-angle {
-    flex: none;
-    width: auto;
-    padding: 14px 10px;
-  }
-
-  .ek-quiz__upload-angle:last-child {
-    grid-column: 1 / -1;
-    max-width: calc(50% - 4px);
-    margin: 0 auto;
-  }
-
-  .ek-quiz__upload-angle-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .ek-quiz__upload-angle-label {
-    font-size: 12px;
-  }
-
   .ek-quiz__upload-checks {
     gap: 10px;
   }
 
   .ek-quiz__upload-check span {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 16px;
   }
 
   .ek-quiz__upload-check input[type="checkbox"] {
