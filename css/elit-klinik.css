@@ -996,7 +996,7 @@ img {
   align-items: center;
   padding: 24px 20px;
   gap: 12px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
   border: 1px solid #EFF3F8;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
