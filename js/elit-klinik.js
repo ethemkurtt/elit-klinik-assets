@@ -938,7 +938,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var webhookType = (tabName === 'appointment') ? 'appointment_request' : 'callback_request';
 
         // Unified payload — same keys for every form.
-        // Common fields (always filled): full_name, phone, district
+        // Common fields (always filled): full_name, email, phone, district
         // Optional fields (may be empty): gender, appointment_date, appointment_time
         var fullName = ((data.ad || '') + ' ' + (data.soyad || '')).trim();
         // Combine country code + phone, strip all whitespace/non-digit-plus chars
@@ -948,6 +948,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var mapped = {
           full_name: fullName,
+          email: (data.eposta || data.email || '').trim().toLowerCase(),
           phone: combinedPhone,
           district: data.ilce || '',
           gender: data.gender || '',
