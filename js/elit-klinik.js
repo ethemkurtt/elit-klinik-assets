@@ -581,9 +581,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Auto-open quiz on page load
-    openQuiz();
-
     // Close quiz
     if (closeBtn) {
       closeBtn.addEventListener('click', closeQuiz);
@@ -846,9 +843,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.open('https://lp.elitklinik.com.tr/rn-calc/', '_blank', 'noopener,noreferrer');
       });
     });
-
-    // Auto-open contact panel on page load
-    openContact();
 
     // Close button
     var contactClose = contactPanel.querySelector('.ek-contact__close');
