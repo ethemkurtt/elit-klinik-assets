@@ -13,6 +13,16 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* =============================================================
+     GLOBAL REDIRECTS — always active, regardless of modals on page
+     ============================================================= */
+  document.querySelectorAll('[data-open-quiz], [data-open-contact]').forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open('https://lp.elitklinik.com.tr/rn-calc/', '_blank', 'noopener,noreferrer');
+    });
+  });
+
+  /* =============================================================
      TOAST NOTIFICATION
      ============================================================= */
   function showToast(message, type) {
@@ -573,13 +583,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Open quiz — now redirects to external calculator in a new tab
-    document.querySelectorAll('[data-open-quiz]').forEach(function (trigger) {
-      trigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.open('https://lp.elitklinik.com.tr/rn-calc/', '_blank', 'noopener,noreferrer');
-      });
-    });
+    // Open quiz triggers handled at top of file (global redirect)
 
     // Close quiz
     if (closeBtn) {
@@ -836,13 +840,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 350);
     }
 
-    // Open triggers — now redirects to external calculator in a new tab
-    document.querySelectorAll('[data-open-contact]').forEach(function (trigger) {
-      trigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.open('https://lp.elitklinik.com.tr/rn-calc/', '_blank', 'noopener,noreferrer');
-      });
-    });
+    // Open contact triggers handled at top of file (global redirect)
 
     // Close button
     var contactClose = contactPanel.querySelector('.ek-contact__close');
