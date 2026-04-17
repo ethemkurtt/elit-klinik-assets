@@ -836,11 +836,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 350);
     }
 
-    // Open triggers
+    // Open triggers — now redirects to external calculator in a new tab
     document.querySelectorAll('[data-open-contact]').forEach(function (trigger) {
       trigger.addEventListener('click', function (e) {
         e.preventDefault();
-        openContact();
+        window.open('https://lp.elitklinik.com.tr/rn-calc/', '_blank', 'noopener,noreferrer');
       });
     });
 
