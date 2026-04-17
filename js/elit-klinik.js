@@ -573,11 +573,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Open quiz
+    // Open quiz — now redirects to external calculator in a new tab
     document.querySelectorAll('[data-open-quiz]').forEach(function (trigger) {
       trigger.addEventListener('click', function (e) {
         e.preventDefault();
-        openQuiz();
+        window.open('https://lp.elitklinik.com.tr/rn-calc/', '_blank', 'noopener,noreferrer');
       });
     });
 
