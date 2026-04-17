@@ -4905,3 +4905,28 @@ html.ek-quiz-open {
     cursor: pointer;
   }
 }
+
+/* =============================================================
+   Phone + Email row — narrower phone, wider email, stack on mobile
+   ============================================================= */
+.ek-contact__row:has(.ek-contact__phone) > .ek-contact__field {
+  min-width: 0;
+}
+.ek-contact__row:has(.ek-contact__phone) > .ek-contact__field:first-child {
+  flex: 0 1 42%;
+}
+.ek-contact__row:has(.ek-contact__phone) > .ek-contact__field:last-child {
+  flex: 1 1 58%;
+}
+
+@media (max-width: 768px) {
+  .ek-contact__row:has(.ek-contact__phone) {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .ek-contact__row:has(.ek-contact__phone) > .ek-contact__field:first-child,
+  .ek-contact__row:has(.ek-contact__phone) > .ek-contact__field:last-child {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
