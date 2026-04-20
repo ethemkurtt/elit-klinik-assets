@@ -1089,7 +1089,6 @@ img {
   padding: 80px 36px;
   position: relative;
   z-index: 1;
-  border-left: 4px solid #F98755;
 }
 
 .ek-simulation__inner {
@@ -4722,8 +4721,6 @@ html.ek-quiz-open {
   /* ---------- SIMULATION ---------- */
   .ek-simulation {
     padding: 56px 20px;
-    border-left: none;
-    border-top: 4px solid #F98755;
   }
 
   .ek-simulation__inner {
