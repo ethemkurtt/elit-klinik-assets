@@ -1985,11 +1985,6 @@ img {
   gap: 8px;
 }
 
-.ek-reviews__card:last-child {
-  border-right: none;
-  border: 1px solid #EFEFEF;
-}
-
 /* Card Header: avatar + name + stars */
 
 .ek-reviews__card-header {
